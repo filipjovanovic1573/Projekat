@@ -8,7 +8,7 @@
             <h2 class="form-signin-heading">Please sign in</h2>
             <t:textfield t:id="email" value="emailValue" class="input-block-level" validate="required" placeholder="Email address" />
             <t:passwordfield t:id="password" value="passwordValue" class="input-block-level" validate="required" placeholder="Password" />
-            <t:submit class="btn btn-large btn-primary" value="Sign in" />
+            <t:submit class="btn btn-large btn-primary" value="Sign In" />
         </t:form>
     </div>
 </div>
