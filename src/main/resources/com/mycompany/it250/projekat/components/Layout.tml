@@ -50,7 +50,6 @@
             <span class="navbar-right">
                 <li>
                     <t:pagelink page="login" class="btn btn-default navbar-btn">Sign in</t:pagelink>
-                    <t:pagelink page="register" class="btn btn-default navbar-btn">Register</t:pagelink>
                	</li>
             </span>
 
