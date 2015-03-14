@@ -1,4 +1,4 @@
-<html t:type="layout" title="Contact com.mycompany"
+<html t:type="layout" title="Contact us"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
 
