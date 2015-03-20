@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html t:type="layout" title="Register"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-      xmlns:p="tapestry:parameter">
-    
-    <div class="row">
-    <div class="span4 offset3">
-        <t:form t:id="register" class="form-signin">
-            <h2 class="form-signin-heading">Register</h2>
-            <t:textfield t:id="fName" value="fNameValue" class="input-block-level" validate="required" placeholder="First name" />
-            <t:textfield t:id="lName" value="lNameValue" class="input-block-level" validate="required" placeholder="Last name" />
-            <t:textfield t:id="email" value="emailValue" class="input-block-level" validate="required" placeholder="Email address" />
-            <t:passwordfield t:id="password" value="passwordValue" class="input-block-level" validate="required" placeholder="Password" />
-            <t:passwordfield t:id="cPassword" value="cPasswordValue" class="input-block-level" validate="required" placeholder="Password" /><br />
-            <t:submit class="btn btn-large btn-primary" value="Register" />
-        </t:form>
-    </div>
-</div>
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+	xmlns:p="tapestry:parameter">
+	
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<t:form t:id="register" class="form-signin">
+				<h2 class="form-signin-heading">Register</h2>
+				<t:textfield t:id="fName" value="fNameValue" class="input-block-level" validate="required" placeholder="First name" />
+				<t:textfield t:id="lName" value="lNameValue" class="input-block-level" validate="required" placeholder="Last name" />
+				<t:textfield t:id="email" value="emailValue" class="input-block-level" validate="required" placeholder="Email address" />
+				<t:passwordfield t:id="password" value="passwordValue" class="input-block-level" validate="required" placeholder="Password" />
+				<t:passwordfield t:id="cPassword" value="cPasswordValue" class="input-block-level" validate="required" placeholder="Password" />
+				<br />
+				<t:submit class="btn btn-large btn-primary" value="Register" />
+			</t:form>
+		</div>
+	</div>
 </html>
