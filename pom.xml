@@ -83,7 +83,11 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             <scope>provided</scope>
         </dependency>
 
-    </dependencies>
+        <dependency>
+        	<groupId>org.hibernate.javax.persistence</groupId>
+        	<artifactId>hibernate-jpa-2.0-api</artifactId>
+        </dependency>
+        </dependencies>
     <build>
         <finalName>IT250-Projekat</finalName>
         <plugins>
@@ -142,6 +146,8 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             <id>apache-staging</id>
             <url>https://repository.apache.org/content/groups/staging/</url>
         </repository>
+        
+        
     </repositories>
 
     <properties>
