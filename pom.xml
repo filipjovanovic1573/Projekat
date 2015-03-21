@@ -82,11 +82,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             <version>${tapestry-release-version}</version>
             <scope>provided</scope>
         </dependency>
-
-        <dependency>
-        	<groupId>org.hibernate.javax.persistence</groupId>
-        	<artifactId>hibernate-jpa-2.0-api</artifactId>
-        </dependency>
+		
         </dependencies>
     <build>
         <finalName>IT250-Projekat</finalName>
@@ -146,8 +142,10 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             <id>apache-staging</id>
             <url>https://repository.apache.org/content/groups/staging/</url>
         </repository>
-        
-        
+        <repository>
+        	<id>hibernate-jpa-2.0-api</id>
+        	<url>http://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.0-api</url>
+        </repository>
     </repositories>
 
     <properties>
