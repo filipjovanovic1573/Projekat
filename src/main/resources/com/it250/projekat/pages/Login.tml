@@ -1,0 +1,18 @@
+<html t:type="layout" title="Login"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <t:beaneditform t:id="login" object="user" exclude="id, role, createTime, firstName, lastName, username" class="bean" t:submitlabel="Submit">
+                <p:email>
+                    <t:textfield t:id="mail" class="margin-bottom-3" value="emailValue" placeholder="Email" />
+                </p:email>
+                <p:password>
+                    <t:passwordfield t:id="password" class="margin-bottom-3" value="passwordValue" placeholder="Password" />
+                </p:password>
+            </t:beaneditform>
+        </div>
+    </div>
+    <t:grid source="users" exclude="id" rowsPerPage="1"/>
+</html>

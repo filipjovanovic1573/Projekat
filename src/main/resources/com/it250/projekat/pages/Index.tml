@@ -1,0 +1,17 @@
+<html t:type="layout" title="Index"
+      t:sidebarTitle="Framework Version"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+    <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+
+    <!-- Main hero unit for a primary marketing message or call to action -->
+
+    <div class="text-center text-info">
+        <h1>Most popular</h1><br></br>
+        <div class="datatable-wrapper text-left text-muted">
+        <table class="jumbotron mostpopular" t:type="jquery/datatable" t:id="datatable" t:source="users" t:row="user"
+            t:rowsPerPage="20" t:options="options" exclude="id, password, role, createTime">
+        </table>
+    </div>
+    </div>
+</html>

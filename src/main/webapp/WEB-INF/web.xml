@@ -11,7 +11,7 @@
         of where to look for pages, components and mixins.
         -->
         <param-name>tapestry.app-package</param-name>
-        <param-value>com.mycompany.it250.projekat</param-value>
+        <param-value>com.it250.projekat</param-value>
     </context-param>
 
     <!--
@@ -22,13 +22,13 @@
     <context-param>
         <param-name>tapestry.development-modules</param-name>
         <param-value>
-            com.mycompany.it250.projekat.services.DevelopmentModule
+            com.it250.projekat.services.DevelopmentModule
         </param-value>
     </context-param>
     <context-param>
         <param-name>tapestry.qa-modules</param-name>
         <param-value>
-            com.mycompany.it250.projekat.services.QaModule
+            com.it250.projekat.services.QaModule
         </param-value>
     </context-param>
 

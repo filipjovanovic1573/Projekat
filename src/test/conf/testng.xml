@@ -2,7 +2,7 @@
 <suite name="IT250-Projekat Application Test Suite" annotations="1.5">
     <test name="Unit Tests">
         <packages>
-            <package name="com.mycompany.it250.projekat"/>
+            <package name="com.it250.projekat"/>
         </packages>
     </test>
 </suite>

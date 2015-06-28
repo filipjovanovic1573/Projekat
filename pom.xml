@@ -1,19 +1,20 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.mycompany</groupId>
+    <groupId>com</groupId>
     <artifactId>IT250-Projekat</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>IT250-Projekat Tapestry 5 Application</name>
-        <dependencies>
+    <dependencies>
         <!-- To set up an application with a database, change the artifactId below to
-             tapestry-hibernate, and add a dependency on your JDBC driver. You'll also
-             need to add Hibernate configuration files, such as hibernate.cfg.xml. -->
+        tapestry-hibernate, and add a dependency on your JDBC driver. You'll also
+        need to add Hibernate configuration files, such as hibernate.cfg.xml. -->
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-core</artifactId>
-            <version>${tapestry-release-version}</version>
+            <version>5.4-beta-27</version>
+            <type>jar</type>
         </dependency>
 
         <!-- Include the Log4j implementation for the SLF4J logging framework -->
@@ -23,7 +24,24 @@
             <version>${slf4j-release-version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.tapestry</groupId>
+            <artifactId>tapestry-hibernate</artifactId>
+            <version>${tapestry-release-version}</version>
+            <type>jar</type>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.3.2</version>
+        </dependency>
 
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.23</version>
+        </dependency>
         <!-- Uncomment this to add support resource minification and runtime compilation -->
         <!--
         <dependency>
@@ -34,17 +52,16 @@
         -->
 
         <!-- Uncomment this to add support for file uploads: -->
-        <!--
-         <dependency>
+        
+        <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-upload</artifactId>
             <version>${tapestry-release-version}</version>
         </dependency>
-        -->
-
+        
         <!-- A dependency on either JUnit or TestNG is required, or the surefire plugin (which runs the tests)
-will fail, preventing Maven from packaging the WAR. Tapestry includes a large number
-of testing facilities designed for use with TestNG (http://testng.org/), so it's recommended. -->
+        will fail, preventing Maven from packaging the WAR. Tapestry includes a large number
+        of testing facilities designed for use with TestNG (http://testng.org/), so it's recommended. -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -67,7 +84,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         </dependency>
 
         <!-- Provided by the servlet container, but sometimes referenced in the application
-       code. -->
+        code. -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -82,8 +99,23 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             <version>${tapestry-release-version}</version>
             <scope>provided</scope>
         </dependency>
-		
-        </dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.3.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tapestry</groupId>
+            <artifactId>tapestry-hibernate-core</artifactId>
+            <version>5.4-beta-24</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.got5</groupId>
+            <artifactId>tapestry5-jquery</artifactId>
+            <version>4.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
     <build>
         <finalName>IT250-Projekat</finalName>
         <plugins>
@@ -95,6 +127,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
                     <source>1.6</source>
                     <target>1.6</target>
                     <optimize>true</optimize>
+                    <downloadJavadocs>true</downloadJavadocs>
                 </configuration>
             </plugin>
 
@@ -118,7 +151,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
                     <!-- Log to the console. -->
                     <requestLog implementation="org.mortbay.jetty.NCSARequestLog">
                         <!-- This doesn't do anything for Jetty, but is a workaround for a Maven bug
-                             that prevents the requestLog from being set. -->
+                        that prevents the requestLog from being set. -->
                         <append>true</append>
                     </requestLog>
                     <systemProperties>
@@ -137,19 +170,35 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
     <repositories>
 
         <!-- This repository is only needed when the Tapestry version is a preview release, rather
-             than a final release. -->
+        than a final release. -->
         <repository>
             <id>apache-staging</id>
             <url>https://repository.apache.org/content/groups/staging/</url>
         </repository>
         <repository>
-        	<id>hibernate-jpa-2.0-api</id>
-        	<url>http://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.0-api</url>
+            <id>hibernate-jpa-2.0-api</id>
+            <url>http://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.0-api</url>
+        </repository>
+        <repository>
+            <id>devlab722-repo</id>
+            <url>http://nexus.devlab722.net/nexus/content/repositories/releases
+            </url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>devlab722-snapshot-repo</id>
+            <url>http://nexus.devlab722.net/nexus/content/repositories/snapshots
+            </url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
         </repository>
     </repositories>
 
     <properties>
-        <tapestry-release-version>5.4-beta-24</tapestry-release-version>
+        <tapestry-release-version>5.4-beta-27</tapestry-release-version>
         <servlet-api-release-version>2.5</servlet-api-release-version>
         <testng-release-version>6.5.2</testng-release-version>
         <easymock-release-version>3.0</easymock-release-version>

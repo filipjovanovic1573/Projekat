@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>${title}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <script src="../js/wavesurfer.min.js"></script>
+        <script src="${context:/js/jquery-2.1.4.js}"></script>
+        <script src="${context:/mybootstrap/js/bootstrap.js}"></script>
+        <script src="${context:/mybootstrap/css/bootstrap-theme.min.css}"></script>
+        <!-- Le styles -->
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="../assets/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- Fav and touch icons -->
+        <link rel="shortcut icon" href="${asset:context:/favicon.ico}" />
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-static-top navbar-inverse" role="navigation">
+            <div class="container">
+                <t:pagelink page="index" class="navbar-brand">IT250-Projekat</t:pagelink>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <t:loop source="pageNames" value="pageName">
+                            <t:any element="li" class="prop:classForPageName">
+                                <t:pagelink page="prop:pageName">${renamePage(pageName)}</t:pagelink>
+                            </t:any>
+                        </t:loop>
+                    </ul>
+                    <t:if test="!isLoggedin()">
+                        <p class="navbar-text navbar-right"><t:pagelink page="login">Login</t:pagelink> | <t:pagelink page="register">Register</t:pagelink> </p>                        
+                    </t:if>
+                    <t:if test="isLoggedin()">
+                        <p class="navbar-text navbar-right">Welcome back, <t:pagelink page="profile">${user.username}</t:pagelink> | <t:actionlink t:id="logout">Log out</t:actionlink></p>
+                    </t:if>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <t:alerts/>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <t:body />
+
+            <hr class="navbar-fixed-bottom"/>
+
+            <footer class="navbar-fixed-bottom">
+            </footer>
+
+        </div> <!-- /container -->
+
+    </body>
+</html>

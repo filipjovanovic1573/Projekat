@@ -1,0 +1,38 @@
+<html t:type="layout" title="Profile name IT250-Projekat"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <ul id="tabs" class="nav nav-tabs nav-tabs-dark margin-bottom-20 margin-bottom-5">
+        <li  class="active"><a href="#edit" data-toggle="tab"><i class="glyphicon glyphicon-edit"/> Edit profile</a></li>
+        <li><a href="#downloads" data-toggle="tab"><i class="glyphicon glyphicon-cloud-download"/> Downloads</a></li>
+        <li><a href="#uploads" data-toggle="tab"><i class="glyphicon glyphicon-cloud-upload"/> Uploads</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="edit" class="tab-pane collapse in active">
+            <t:beaneditform t:id="edit" object="user" exclude="id, role, createTime" class="bean col-md-offset-3 col-md-6" t:submitlabel="Save changes">
+                <p:firstName>
+                    <t:textfield t:id="firstname" class="margin-bottom-3" value="firstnameValue" placeholder="First name" />
+                </p:firstName>
+                <p:lastName>
+                    <t:textfield t:id="lastname" class="margin-bottom-3" value="lastnameValue" placeholder="Last name" />
+                </p:lastName>
+                <p:email>
+                    <t:textfield t:id="mail" class="margin-bottom-3" value="emailValue" placeholder="Email" />
+                </p:email>
+                <p:username>
+                    <t:textfield t:id="username" class="margin-bottom-3" value="usernameValue" placeholder="Username" />
+                </p:username>
+                <p:password>
+                    <t:passwordfield t:id="password" class="margin-bottom-3" value="passwordValue" placeholder="Password" />
+                </p:password>
+            </t:beaneditform>   
+        </div>
+        <div id="downloads" class="tab-pane collapse">
+            downloads
+        </div>
+        <div id="uploads" class="tab-pane collapse">
+            uploads
+        </div>
+    </div>
+</html>

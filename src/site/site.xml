@@ -8,7 +8,7 @@
     <body>
 
         <menu name="IT250-Projekat Project">
-            <item name="About" href="index.html"/>
+            <item name="About" href="lindex.html"/>
         </menu>
 
         <menu ref="reports"/>
