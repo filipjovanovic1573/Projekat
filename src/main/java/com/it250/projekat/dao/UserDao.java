@@ -13,6 +13,7 @@ import com.it250.projekat.entities.User;
  */
 public interface UserDao extends GenericDao{
     public User checkUser(String email, String password);
+    public User getUserById(int id);
     public boolean checkEmail(String email);
     public boolean checkEmail(String email, int id);
     public boolean checkUsername(String username);

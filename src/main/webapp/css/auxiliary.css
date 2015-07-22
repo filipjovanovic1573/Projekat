@@ -4,10 +4,6 @@
     display: none !important;
 }
 
-//.profile-body {
-//    height: 400px;
-//}
-
 .margin-top-3{
     margin-top: 3px;
 }
@@ -252,7 +248,8 @@ tfoot {
     display: none;
 }
 
-.datatable-wrapper .fg-toolbar{
+.datatable-wrapper .fg-toolbar,
+.fg-toolbar{
     display: none !important;
 }
 
@@ -294,14 +291,81 @@ tbody{
     cursor: pointer;
 }
 
-#textfield{
+.nav-tabs {
+    border-bottom: none;
+}
+
+.darkbox{
     background: #555555;
     color: white;
-    cursor: text;
     border-color: black;
     outline: none;
     border: none !important;
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
     box-shadow: none !important;
+}
+
+.btn-group{
+    float: right !important;
+}
+
+.btn-group > .btn{
+    min-width: 100px;
+}
+
+.grid-dark td{ 
+    padding: 3px;
+    color: #dddddd;
+}
+
+.grid-dark th{
+    color: #dddddd;
+    background-color: #222222;
+    padding: 3px;
+    font-weight: normal !important;
+
+}
+.grid-dark a,
+.grid-dark a:hover{
+    color: #dddddd !important; 
+    text-decoration: none;
+}
+
+hr {
+    background-color: black;
+    color: black;
+}
+
+footer{
+    background-color: #222222;
+    border-top: 1px solid black !important;
+}
+
+ul{
+    text-decoration: none;
+    color: #9d9d9d;
+    list-style: none;
+}
+
+.footer-links{
+    color: #9d9d9d;
+    font-size: 20px;
+}
+
+a:hover{
+    color: white !important;
+    text-decoration: none !important;
+}
+
+h1{
+    color: white;
+}
+
+select{
+    max-width: 100px
+}
+
+.darktext{
+    color: #dddddd;
 }

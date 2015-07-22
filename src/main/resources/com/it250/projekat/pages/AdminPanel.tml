@@ -1,5 +1,34 @@
-<html t:type="layout" title="Admin panel"
+<html t:type="layout" title="${message:title}"
       t:sidebarTitle="Framework Version"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-      xmlns:p="tapestry:parameter">   
+      xmlns:p="tapestry:parameter">  
+    <!-- <t:if test="!isAdmin()">
+        redirect to index 
+    </t:if>!-->
+    <ul id="tabs" class="nav nav-tabs nav-tabs-dark margin-bottom-20 margin-bottom-5">
+        <li  class="active"><a href="#users" data-toggle="tab"><i class="glyphicon glyphicon-user"/> ${message:users}</a></li>
+        <li><a href="#songs" data-toggle="tab"><i class="glyphicon glyphicon-list"/> ${message:songs}</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="users" class="tab-pane collapse in active">
+            <div class="datatable-wrapper text-left text-muted">
+                <table class="grid-dark col-md-12" t:type="grid" t:id="datatable" source="users" row="editUser"
+                       rowsPerPage="20" exclude="password" add="edit">
+                    <p:editCell>
+                        <t:pagelink page="edit" class="darktext" context="editUser.id">${message:edit}</t:pagelink>
+                    </p:editCell>
+                </table>
+            </div>  
+        </div>
+
+        <div id="songs" class="tab-pane collapse">
+            <table class="grid-dark col-md-12" t:type="grid" source="songs" 
+                   inPlace="true" rowsPerPage="15" exclude="id, createTime" pagerPosition="bottom" row="song">
+                <p:linkCell>
+                    <a href="${song.getLink()}">${message:download}</a>
+                </p:linkCell>
+            </table>
+        </div>
+    </div>
 </html>

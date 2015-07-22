@@ -5,12 +5,15 @@
  */
 package com.it250.projekat.entities;
 
+import com.it250.projekat.other.Role;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -41,9 +44,10 @@ public class User extends AbstractEntity {
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
+    @Enumerated(EnumType.STRING)
     @Basic(optional = false)
     @Column(name = "role")
-    private String role;
+    private Role role;
     @Column(name = "create_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
@@ -58,7 +62,7 @@ public class User extends AbstractEntity {
         this.id = id;
     }
 
-    public User(Integer id, String username, String email, String password, String role) {
+    public User(Integer id, String username, String email, String password, Role role) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -114,11 +118,11 @@ public class User extends AbstractEntity {
         this.password = password;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
@@ -152,10 +156,7 @@ public class User extends AbstractEntity {
             return false;
         }
         User other = (User) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override

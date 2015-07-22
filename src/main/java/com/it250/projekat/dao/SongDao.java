@@ -13,7 +13,7 @@ import java.util.List;
  * @author Filip
  */
 public interface SongDao extends GenericDao{
-    public List<Song> findByName(String name);
-    public int totalSongs();
-    public List<Song> loadSongsFrom(int from);
+    public List<Song> findSongs(String name, String genre);
+    public List<Song> findSongsByGenre(String genre);
+    public List<Song> findSongsByName(String name);
 }

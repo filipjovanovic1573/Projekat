@@ -5,13 +5,13 @@
  */
 package com.it250.projekat.entities;
 
+import com.it250.projekat.other.Genre;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -30,18 +30,22 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 @NamedQueries({
     @NamedQuery(name = "Song.findAll", query = "SELECT s FROM Song s")})
 public class Song extends AbstractEntity {
+
     @Basic(optional = false)
     @Column(name = "name")
     private String name;
     @Column(name = "performer")
     private String performer;
+    @Enumerated(EnumType.STRING)
     @Column(name = "genre")
-    private String genre;
+    private Genre genre;
     @Column(name = "details")
     private String details;
     @Column(name = "create_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
+    @Column(name = "link")
+    private String link;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User userId;
@@ -83,11 +87,11 @@ public class Song extends AbstractEntity {
         this.performer = performer;
     }
 
-    public String getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(Genre genre) {
         this.genre = genre;
     }
 
@@ -105,6 +109,14 @@ public class Song extends AbstractEntity {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public User getUserId() {
@@ -129,15 +141,12 @@ public class Song extends AbstractEntity {
             return false;
         }
         Song other = (Song) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override
     public String toString() {
         return "com.it250.projekat.entities.Song[ id=" + id + " ]";
     }
-    
+
 }

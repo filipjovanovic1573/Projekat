@@ -8,6 +8,8 @@ package com.it250.projekat.pages;
 import com.it250.projekat.dao.UserDao;
 import com.it250.projekat.other.TrashHash;
 import com.it250.projekat.entities.User;
+import com.it250.projekat.other.Constants;
+import com.it250.projekat.other.Role;
 import java.io.File;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -21,12 +23,12 @@ import org.apache.tapestry5.corelib.components.PasswordField;
 import org.apache.tapestry5.corelib.components.TextField;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
+import org.apache.tapestry5.ioc.Messages;
 
 /**
  *
  * @author Workbench
  */
-// @Import(stylesheet="context:/css/auxiliary.css")
 public class Register {
 
     //<editor-fold defaultstate="collapsed" desc="Properties and annotations">
@@ -65,10 +67,11 @@ public class Register {
     @Validate("required, email")
     private String emailValue;
 
-    private String userFolder = "E:\\IT250-Projekat\\Users\\";
-    
     @Inject
     private UserDao userDao;
+    
+    @Inject
+    private Messages messages;
     //</editor-fold>
 
     void onActivate() {
@@ -81,15 +84,15 @@ public class Register {
 
     void onValidateFromRegister() {
         if (!passwordValue.equals(confpasswordValue)) {
-            register.recordError(confirmPassword, "Passwords don't match");
+            register.recordError(confirmPassword, messages.get("register_password_match"));
         }
         
         if(!userDao.checkEmail(emailValue)){
-            register.recordError(mail, "Email is taken");
+            register.recordError(mail, messages.get("register_mail_error"));
         }
         
         if(!userDao.checkUsername(usernameValue)){
-            register.recordError(username, "Username is taken.");
+            register.recordError(username, messages.get("register_username_error"));
         }
     }
 
@@ -100,11 +103,10 @@ public class Register {
         user.setEmail(emailValue);
         user.setUsername(usernameValue);
         user.setPassword(TrashHash.toHash(passwordValue));
-        user.setRole("korisnik");
+        user.setRole(Role.Korisnik);
         user.setCreateTime(new Timestamp(new Date().getTime()));
         userDao.add(user);
-        new File(userFolder + usernameValue).mkdirs(); //needs rework
-        alert.success("Account created. Check your email for confimation link");
+        new File(Constants.USER_FOLDER + usernameValue).mkdirs(); //needs rework
         
         return this;
     }

@@ -34,7 +34,7 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao {
         long count = (Long) session.createCriteria(User.class).add(
                 Restrictions.eq("username", username)).add(
                         Restrictions.ne("id", id)).setProjection(Projections.rowCount()).uniqueResult();
-        
+
         System.out.println("checkUsername " + count);
         return count == 0;
     }
@@ -42,15 +42,20 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao {
     @Override
     public boolean checkEmail(String email) {
         long count = (Long) session.createCriteria(User.class).add(
-                        Restrictions.eq("email", email)).setProjection(Projections.rowCount()).uniqueResult();
+                Restrictions.eq("email", email)).setProjection(Projections.rowCount()).uniqueResult();
         return count == 0;
     }
 
     @Override
     public boolean checkUsername(String username) {
         long count = (Long) session.createCriteria(User.class).add(
-                        Restrictions.eq("username", username)).setProjection(Projections.rowCount()).uniqueResult();
+                Restrictions.eq("username", username)).setProjection(Projections.rowCount()).uniqueResult();
         return count == 0;
+    }
+
+    @Override
+    public User getUserById(int id) {
+        return (User) session.createCriteria(User.class).add(Restrictions.eq("id", id)).uniqueResult();
     }
 
 }

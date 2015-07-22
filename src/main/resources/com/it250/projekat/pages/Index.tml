@@ -7,11 +7,11 @@
     <!-- Main hero unit for a primary marketing message or call to action -->
 
     <div class="text-center text-info">
-        <h1>Most popular</h1><br></br>
+        <h1>${message:h1-text}</h1><br></br>
         <div class="datatable-wrapper text-left text-muted">
-        <table class="jumbotron mostpopular" t:type="jquery/datatable" t:id="datatable" t:source="users" t:row="user"
-            t:rowsPerPage="20" t:options="options" exclude="id, password, role, createTime">
-        </table>
-    </div>
+            <table class="jumbotron mostpopular" t:type="jquery/datatable" t:id="datatable" t:source="users" t:row="user"
+                   t:rowsPerPage="20" t:options="options" exclude="id, password, role, createTime">
+            </table>
+        </div>
     </div>
 </html>

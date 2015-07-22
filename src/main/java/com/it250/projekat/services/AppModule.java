@@ -2,6 +2,8 @@ package com.it250.projekat.services;
 
 import com.it250.projekat.dao.GenericDao;
 import com.it250.projekat.dao.GenericDaoImpl;
+import com.it250.projekat.dao.SongDao;
+import com.it250.projekat.dao.SongDaoImpl;
 import com.it250.projekat.dao.UserDao;
 import com.it250.projekat.dao.UserDaoImpl;
 import java.io.IOException;
@@ -27,6 +29,7 @@ public class AppModule {
     public static void bind(ServiceBinder binder) {
         binder.bind(GenericDao.class, GenericDaoImpl.class);
         binder.bind(UserDao.class, UserDaoImpl.class);
+        binder.bind(SongDao.class, SongDaoImpl.class);
         // binder.bind(MyServiceInterface.class, MyServiceImpl.class);
 
         // Make bind() calls on the binder object to define most IoC services.
@@ -55,7 +58,7 @@ public class AppModule {
         // locales to just "en" (English). As you add localised message catalogs and other assets,
         // you can extend this list of locales (it's a comma separated series of locale names;
         // the first locale name is the default when there's no reasonable match).
-        configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
+        configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en, sr_RS");
         configuration.add(SymbolConstants.HMAC_PASSPHRASE, "1234qwer");
     }
 

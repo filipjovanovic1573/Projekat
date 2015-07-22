@@ -1,0 +1,13 @@
+<html t:type="layout" title="${message:title}"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <h1 class="text-center margin-bottom-20">${message:h1}</h1>
+    <form t:type="form" t:id="upload" class="col-lg-offset-4 col-md-4">
+        <input t:type="upload" t:id="file" value="file" class="margin-bottom-5"/>
+        <t:textfield value="performer" class="margin-bottom-5 darkbox" placeholder="${message:performer}"/>
+        <t:textarea value="details" class="margin-bottom-5 darkbox" placeholder="${message:details}"/>
+        <input type="submit" value="${message:submit}" class="btn btn-success pull-right"/>
+        <input t:id="select" t:type="select" value="genre" model="model" class="dropdown darkbox margin-right-3 pull-right"/>
+    </form>
+</html>

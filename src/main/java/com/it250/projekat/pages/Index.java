@@ -8,29 +8,29 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.json.JSONObject;
 
 public class Index {
-    
+    //<editor-fold defaultstate="collapsed" desc="Properties and annotations">
     @Inject
     private UserDao dao;
-    
+
     @Property
     private ArrayList<User> users;
-    
+
     @Property
     private User user;
+    //</editor-fold>
     
-    void setupRender(){
-        if(users == null){
+    void setupRender() {
+        if (users == null) {
             users = new ArrayList<User>();
         }
         users = (ArrayList<User>) dao.findAll(User.class);
     }
-    
+
     public JSONObject getOptions() {
-        
         // The available options are documented at http://www.datatables.net/ref
         JSONObject options = new JSONObject();
         options.put("bJQueryUI", "true");
-        
+
         return options;
     }
 

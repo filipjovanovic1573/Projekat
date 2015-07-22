@@ -1,26 +1,26 @@
 <html t:type="layout" title="Register"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
-    <h1 class="col-md-offset-4 col-md-4">Create your account</h1> <br/><br/>
-    <t:beaneditform t:id="register" object="user" add="confirmPassword" exclude="id, role, createTime" class="bean col-md-offset-4 col-md-4" t:submitlabel="Submit">
+    <h1 class="text-center">Create your account</h1> <br/>
+    <t:beaneditform t:id="register" object="user" add="confirmPassword" exclude="id, role, createTime" class="bean col-md-offset-4 col-md-4" t:submitlabel="${message:submit}">
         <p:firstName>
-            <t:textfield t:id="firstname" class="margin-bottom-3" value="firstnameValue" placeholder="First name" />
+            <t:textfield t:id="firstname" class="darkbox margin-bottom-3" value="firstnameValue" placeholder="${message:firstname}" />
         </p:firstName>
         <p:lastName>
-            <t:textfield t:id="lastname" class="margin-bottom-3" value="lastnameValue" placeholder="Last name" />
+            <t:textfield t:id="lastname" class="darkbox margin-bottom-3" value="lastnameValue" placeholder="${message:lastname}" />
         </p:lastName>
         <p:email>
-            <t:textfield t:id="mail" class="margin-bottom-3" value="emailValue" placeholder="Email" />
+            <t:textfield t:id="mail" class="darkbox margin-bottom-3" value="emailValue" placeholder="${message:email}" />
         </p:email>
         <p:username>
-            <t:textfield t:id="username" class="margin-bottom-3" value="usernameValue" placeholder="Username" />
+            <t:textfield t:id="username" class="darkbox margin-bottom-3" value="usernameValue" placeholder="${message:username}" />
         </p:username>
         <p:password>
-            <t:passwordfield t:id="password" class="margin-bottom-3" value="passwordValue" placeholder="Password" />
+            <t:passwordfield t:id="password" class="darkbox margin-bottom-3" value="passwordValue" placeholder="${message:password}" />
         </p:password>
         <p:confirmPassword>
-            <t:passwordfield t:id="confirmPassword" class="margin-bottom-5" value="confpasswordValue" placeholder="Confirm password" />
+            <t:passwordfield t:id="confirmPassword" class="darkbox margin-bottom-5" value="confpasswordValue" placeholder="${message:confirm-password}" />
         </p:confirmPassword>
     </t:beaneditform>
-    <t:grid source="users" exclude="id" />
+    <!-- <t:grid source="users" exclude="id" /> !-->
 </html>

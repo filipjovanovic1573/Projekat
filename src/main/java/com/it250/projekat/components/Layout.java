@@ -2,11 +2,13 @@ package com.it250.projekat.components;
 
 import com.it250.projekat.entities.User;
 import com.it250.projekat.pages.Index;
+import java.util.Locale;
 import org.apache.tapestry5.*;
 import org.apache.tapestry5.annotations.*;
 import org.apache.tapestry5.ioc.annotations.*;
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.SymbolConstants;
+import org.apache.tapestry5.services.PersistentLocale;
 
 /**
  * Layout component for pages of application test-project.
@@ -16,24 +18,23 @@ import org.apache.tapestry5.SymbolConstants;
 public class Layout {
 
     //<editor-fold defaultstate="collapsed" desc="Properties and annotations">
-
     @Inject
     private ComponentResources resources;
-    
-    /**
-     * The page title, for the <title> element and the <h1> element.
-     */
+
+    @Inject
+    private PersistentLocale persistentLocale;
+
     @Property
     @Parameter(required = true, defaultPrefix = BindingConstants.LITERAL)
     private String title;
 
     @Property
-    private String pageName, searchValue;
+    private String pageName;
 
     @Property
     @SessionState
     User user;
-    
+
     @Property
     private boolean userExists;
 
@@ -43,6 +44,10 @@ public class Layout {
     private String appVersion;
 //</editor-fold>
 
+    void onActivate() {
+        persistentLocale.set(Locale.ENGLISH);
+    }
+
     public String getClassForPageName() {
         return resources.getPageName().equalsIgnoreCase(pageName)
                 ? "active"
@@ -50,27 +55,39 @@ public class Layout {
     }
 
     public String[] getPageNames() {
-        return new String[]{"Index", "About", "Contact", "AdvancedSearch"};
+        return new String[]{"AdvancedSearch", "Upload"};
     }
 
-    public String renamePage(String page){
-        if(page.equals("AdvancedSearch"))
-            return "Advanced Search";
-        else
+    public String renamePage(String page) {
+        if (persistentLocale.get() != Locale.ENGLISH) {
+            if (page.equals("AdvancedSearch")) {
+                return "Napredna pretraga";
+            } 
+            else if(page.equals("Upload")){
+                return "Postavi pesmu";
+            }
+            else {
+                return page;
+            }
+        }
+
+        if (page.equals("AdvancedSearch")) {
+            return "Advanced search";
+        } else {
             return page;
+        }
     }
-    
+
     public Object onActionFromLogout() {
         user = null;
         return Index.class;
     }
-    
-    public boolean isLoggedin(){
-        if(user.getId() == null){
+
+    public boolean isLoggedin() {
+        if (user.getId() == null) {
             return false;
-        }
-        else {
+        } else {
             return true;
-        }  
+        }
     }
 }

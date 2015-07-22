@@ -1,14 +1,24 @@
-<html t:type="layout" title="Advanced Search"
+<html t:type="layout" title="${message:title}"
       t:sidebarTitle="Framework Version"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
-    
-    <div>
-        <t:form class="col-md-offset-3 col-md-6">
-            <t:textfield class="margin-bottom-20" value="searchValue" placeholder="Search..."/>
-            <label class="checkbox-inline"><input type="checkbox" value=""/>Rock    </label>
-            <label class="checkbox-inline"><input type="checkbox" value=""/>Metal   </label>
-            <label class="checkbox-inline"><input type="checkbox" value=""/>Hip-Hop </label> 
-        </t:form>
-    </div>
+    <script></script>
+    <t:zone t:id="tablezone" class="col-md-12">
+        <div class="margin-bottom-20 col-md-offset-3 col-md-6">
+            <t:form t:id="searchform" zone="tablezone">
+                <t:textfield t:id="searchbox" value="searchValue" class="form-control darkbox margin-bottom-3" placeholder="${message:search}"/>
+                <input t:type="submit" t:id="search" value="${message:searchbtn}" class="btn btn-success pull-right"/>
+                <input t:id="select" t:type="select" value="genre" model="model" class="dropdown darkbox margin-right-3 pull-right"/>
+            </t:form>
+        </div>
+        <br/>
+        <div class="col-md-12">
+            <table class="grid-dark col-md-12" t:type="grid" source="songs" 
+                   inPlace="true" rowsPerPage="15" exclude="id, createTime" pagerPosition="bottom" row="song" empty="${message:empty}">
+                <p:linkCell>
+                    <a href="${song.getLink()}">${message:download}</a>
+                </p:linkCell>
+            </table>
+        </div>
+    </t:zone>
 </html>

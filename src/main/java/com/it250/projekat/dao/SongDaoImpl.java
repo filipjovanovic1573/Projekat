@@ -7,9 +7,6 @@ package com.it250.projekat.dao;
 
 import com.it250.projekat.entities.Song;
 import java.util.List;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -19,21 +16,17 @@ import org.hibernate.criterion.Restrictions;
 public class SongDaoImpl extends GenericDaoImpl implements SongDao{
 
     @Override
-    public List<Song> findByName(String name) {
-        return session.createCriteria(Song.class).add(Restrictions.ilike("name", name + "%")).list();
+    public List<Song> findSongs(String name, String genre) {
+        return session.createCriteria(Song.class).add(Restrictions.eq("name", name)).add(Restrictions.eq("genre", genre)).list();
     }
 
     @Override
-    public int totalSongs() {
-        return (Integer) session.createCriteria(Song.class).setProjection(Projections.rowCount()).uniqueResult();
+    public List<Song> findSongsByGenre(String genre) {
+        return session.createCriteria(Song.class).add(Restrictions.eq("genre", genre)).list();
     }
 
     @Override
-    public List<Song> loadSongsFrom(int from) {
-        int page = (from - 1) * 10;
-        return session.createCriteria(Song.class).setFirstResult(page).setMaxResults(10)
-                .addOrder(Order.asc("id"))
-                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+    public List<Song> findSongsByName(String name) {
+        return session.createCriteria(Song.class).add(Restrictions.eq("name", name)).list();
     }
-    
 }
