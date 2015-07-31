@@ -17,4 +17,5 @@ public interface SongDao extends GenericDao{
     public List<Song> findSongs(String name, Genre genre);
     public List<Song> findSongsByGenre(Genre genre);
     public List<Song> findSongsByName(String name);
+    public List<Song> findLatest();
 }

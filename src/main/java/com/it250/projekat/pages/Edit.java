@@ -9,6 +9,8 @@ import com.it250.projekat.dao.UserDao;
 import com.it250.projekat.entities.User;
 import com.it250.projekat.other.Role;
 import com.it250.projekat.other.TrashHash;
+import com.it250.projekat.services.ProtectedPage;
+import javax.annotation.security.RolesAllowed;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.InjectComponent;
@@ -26,6 +28,8 @@ import org.apache.tapestry5.util.EnumSelectModel;
  *
  * @author Filip
  */
+@ProtectedPage
+@RolesAllowed(value={"Admin"})
 public class Edit {
 
     //<editor-fold defaultstate="collapsed" desc="Properties and annotations">

@@ -10,7 +10,9 @@ import com.it250.projekat.entities.Song;
 import com.it250.projekat.entities.User;
 import com.it250.projekat.other.Constants;
 import com.it250.projekat.other.Genre;
+import com.it250.projekat.services.ProtectedPage;
 import java.io.File;
+import javax.annotation.security.RolesAllowed;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
@@ -25,6 +27,9 @@ import org.apache.tapestry5.util.EnumSelectModel;
  *
  * @author Filip
  */
+
+@ProtectedPage
+@RolesAllowed(value={"Korisnik", "Admin"})
 public class Upload {
 
     //<editor-fold defaultstate="collapsed" desc="Properties and annotations">
