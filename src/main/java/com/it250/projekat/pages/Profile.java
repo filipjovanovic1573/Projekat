@@ -73,9 +73,9 @@ public class Profile {
         fillFields();
 
         uploaded = new ArrayList<Song>();
+        downloaded = new ArrayList<Song>();
         uploaded = (ArrayList<Song>) songDao.findByUserId(user);
         
-        System.out.println(uploaded.toString());
 
     }
 

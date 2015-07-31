@@ -4,7 +4,6 @@
 
     <ul id="tabs" class="nav nav-tabs nav-tabs-dark margin-bottom-20 margin-bottom-5">
         <li  class="active"><a href="#edit" data-toggle="tab"><i class="glyphicon glyphicon-edit"/> ${message:edit}</a></li>
-        <li><a href="#downloads" data-toggle="tab"><i class="glyphicon glyphicon-cloud-download"/> ${message:downloads}</a></li>
         <li><a href="#uploads" data-toggle="tab"><i class="glyphicon glyphicon-cloud-upload"/> ${message:uploads}</a></li>
     </ul>
 
@@ -27,9 +26,6 @@
                     <t:passwordfield t:id="password" class="margin-bottom-3 darkbox" value="passwordValue" placeholder="${message:password}" />
                 </p:password>
             </t:beaneditform>   
-        </div>
-        <div id="downloads" class="tab-pane collapse">
-            
         </div>
         <div id="uploads" class="tab-pane collapse">
             <div class="col-md-12">
