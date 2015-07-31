@@ -69,6 +69,7 @@ public class Upload {
         song.setGenre(genre);
         song.setPerformer(performer);
         song.setDetails(details);
+        song.setUserId(user);
 
         File tmp = new File(uploadFolder, file.getFileName());
         file.write(tmp);

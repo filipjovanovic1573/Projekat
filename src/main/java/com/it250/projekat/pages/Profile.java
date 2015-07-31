@@ -5,9 +5,12 @@
  */
 package com.it250.projekat.pages;
 
+import com.it250.projekat.dao.SongDao;
 import com.it250.projekat.dao.UserDao;
+import com.it250.projekat.entities.Song;
 import com.it250.projekat.entities.User;
 import com.it250.projekat.other.TrashHash;
+import java.util.ArrayList;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
@@ -21,16 +24,16 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 public class Profile {
 
     //<editor-fold defaultstate="collapsed" desc="Properties, annotations and variables">
-    
     @InjectComponent
     private BeanEditForm edit;
 
     @InjectComponent
     private TextField mail, username;
 
-    @Property @SessionState
+    @Property
+    @SessionState
     private User user;
-    
+
     @Property
     @Validate("regexp=^[A-Za-z ]+$")
     private String firstnameValue, lastnameValue;
@@ -49,16 +52,31 @@ public class Profile {
 
     @Inject
     private UserDao userDao;
-    
+
+    @Inject
+    private SongDao songDao;
+
     @Property
     private boolean userExists;
 
     @Inject
     private Messages messages;
+
+    @Property
+    private ArrayList<Song> uploaded, downloaded;
+
+    @Property
+    private Song song;
     //</editor-fold>
-    
+
     void onActivate() {
         fillFields();
+
+        uploaded = new ArrayList<Song>();
+        uploaded = (ArrayList<Song>) songDao.findByUserId(user);
+        
+        System.out.println(uploaded.toString());
+
     }
 
     void onValidateFromEdit() {
@@ -70,25 +88,24 @@ public class Profile {
             edit.recordError(username, messages.get("profile_username_error"));
         }
     }
-    
-    Object onFailureFromEdit(){
+
+    Object onFailureFromEdit() {
         return null;
     }
-    
+
     @CommitAfter
     Object onSuccess() {
         if (passwordValue.equals("")) {
             user.setPassword(TrashHash.toHash(passwordValue));
-        } 
-        else {
+        } else {
             user.setPassword(user.getPassword());
         }
         user.setUsername(usernameValue);
         userDao.merge(user);
         return null;
     }
-    
-    private void fillFields(){
+
+    private void fillFields() {
         firstnameValue = user.getFirstName();
         lastnameValue = user.getLastName();
         emailValue = user.getEmail();

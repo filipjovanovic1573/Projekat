@@ -6,6 +6,7 @@
 package com.it250.projekat.dao;
 
 import com.it250.projekat.entities.Song;
+import com.it250.projekat.entities.User;
 import com.it250.projekat.other.Genre;
 import java.util.List;
 
@@ -18,4 +19,5 @@ public interface SongDao extends GenericDao{
     public List<Song> findSongsByGenre(Genre genre);
     public List<Song> findSongsByName(String name);
     public List<Song> findLatest();
+    public List<Song> findByUserId(User user_id);
 }

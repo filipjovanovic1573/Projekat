@@ -6,6 +6,7 @@
 package com.it250.projekat.dao;
 
 import com.it250.projekat.entities.Song;
+import com.it250.projekat.entities.User;
 import com.it250.projekat.other.Genre;
 import java.util.List;
 import org.hibernate.criterion.Order;
@@ -35,6 +36,11 @@ public class SongDaoImpl extends GenericDaoImpl implements SongDao{
     @Override
     public List<Song> findLatest() {
         return session.createCriteria(Song.class).addOrder(Order.desc("id")).setMaxResults(20).list();
+    }
+
+    @Override
+    public List<Song> findByUserId(User user_id) {
+        return session.createCriteria(Song.class).add(Restrictions.eq("userId", user_id)).list();
     }
     
 }

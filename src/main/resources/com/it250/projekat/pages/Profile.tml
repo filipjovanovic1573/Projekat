@@ -29,10 +29,17 @@
             </t:beaneditform>   
         </div>
         <div id="downloads" class="tab-pane collapse">
-            downloads
+            
         </div>
         <div id="uploads" class="tab-pane collapse">
-            uploads
+            <div class="col-md-12">
+                <table class="grid-dark col-md-12" t:type="grid" source="uploaded" 
+                       inPlace="true" rowsPerPage="15" exclude="id, createTime" pagerPosition="bottom" row="song" empty="${message:empty}">
+                    <p:linkCell>
+                        <a href="${song.getLink()}">${message:download}</a>
+                    </p:linkCell>
+                </table>
+            </div>
         </div>
     </div>
 </html>
