@@ -6,6 +6,7 @@
 package com.it250.projekat.dao;
 
 import com.it250.projekat.entities.Song;
+import com.it250.projekat.other.Genre;
 import java.util.List;
 import org.hibernate.criterion.Restrictions;
 
@@ -16,17 +17,17 @@ import org.hibernate.criterion.Restrictions;
 public class SongDaoImpl extends GenericDaoImpl implements SongDao{
 
     @Override
-    public List<Song> findSongs(String name, String genre) {
+    public List<Song> findSongs(String name, Genre genre) {
         return session.createCriteria(Song.class).add(Restrictions.eq("name", name)).add(Restrictions.eq("genre", genre)).list();
     }
 
     @Override
-    public List<Song> findSongsByGenre(String genre) {
+    public List<Song> findSongsByGenre(Genre genre) {
         return session.createCriteria(Song.class).add(Restrictions.eq("genre", genre)).list();
     }
 
     @Override
     public List<Song> findSongsByName(String name) {
-        return session.createCriteria(Song.class).add(Restrictions.eq("name", name)).list();
+        return session.createCriteria(Song.class).add(Restrictions.ilike("name", name)).list();
     }
 }

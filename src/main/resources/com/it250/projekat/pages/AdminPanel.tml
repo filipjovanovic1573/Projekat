@@ -14,7 +14,7 @@
         <div id="users" class="tab-pane collapse in active">
             <div class="datatable-wrapper text-left text-muted">
                 <table class="grid-dark col-md-12" t:type="grid" t:id="datatable" source="users" row="editUser"
-                       rowsPerPage="20" exclude="password" add="edit">
+                       rowsPerPage="20" exclude="password" add="edit" pagerPosition="bottom">
                     <p:editCell>
                         <t:pagelink page="edit" class="darktext" context="editUser.id">${message:edit}</t:pagelink>
                     </p:editCell>

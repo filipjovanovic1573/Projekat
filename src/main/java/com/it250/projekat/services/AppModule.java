@@ -7,7 +7,6 @@ import com.it250.projekat.dao.SongDaoImpl;
 import com.it250.projekat.dao.UserDao;
 import com.it250.projekat.dao.UserDaoImpl;
 import java.io.IOException;
-
 import org.apache.tapestry5.*;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
@@ -140,4 +139,9 @@ public class AppModule {
 
         configuration.add("Timing", filter);
     }
+
+    public void contributeComponentRequestHandler(OrderedConfiguration<ComponentRequestFilter> configuration) {
+        configuration.addInstance("PageProtectionFilter", PageProtectionFilter.class);
+    }
+
 }

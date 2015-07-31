@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.it250.projekat.pages;
 
 import com.it250.projekat.dao.SongDao;
@@ -10,7 +5,9 @@ import com.it250.projekat.dao.UserDao;
 import com.it250.projekat.entities.Song;
 import com.it250.projekat.entities.User;
 import com.it250.projekat.other.Role;
+import com.it250.projekat.services.ProtectedPage;
 import java.util.ArrayList;
+import javax.annotation.security.RolesAllowed;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -20,6 +17,9 @@ import org.apache.tapestry5.json.JSONObject;
  *
  * @author Workbench
  */
+
+@ProtectedPage
+@RolesAllowed(value={"Admin"})
 public class AdminPanel {
 
     @Inject

@@ -7,19 +7,19 @@ package com.it250.projekat.pages;
 
 import com.it250.projekat.dao.SongDao;
 import com.it250.projekat.entities.Song;
+import com.it250.projekat.entities.User;
 import com.it250.projekat.other.Genre;
 import java.util.ArrayList;
-import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.beaneditor.Validate;
-import org.apache.tapestry5.corelib.components.Zone;
+import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.util.EnumSelectModel;
 
 /**
@@ -37,11 +37,11 @@ public class AdvancedSearch {
     @Validate("required")
     private Genre genre;
 
-    @Inject
-    AlertManager alert;
-
     @InjectComponent
-    private Zone tablezone;
+    private Form searchform;
+
+    @Inject
+    private AlertManager alert;
 
     @Inject
     private SongDao dao;
@@ -55,11 +55,9 @@ public class AdvancedSearch {
 
     @Inject
     private Messages messages;
-
-    @Inject
-    private ComponentResources resources;
     
-    private Request request;
+    @SessionState
+    private User user;
     //</editor-fold>
 
     void onActivate() {
@@ -71,32 +69,39 @@ public class AdvancedSearch {
 
     Object onSuccessFromSearchform() {
         checkInput();
-        if (songs == null || songs.size() < 1) {
-            return this;
-        } else {
+       /* if (songs == null || songs.size() < 1) {
             return this;
         }
+        return this;*/
+        System.out.println(searchValue + " " + genre);
+        return this;
     }
 
     private void checkInput() {
-        if (genre.name().equals(genre.Genre.toString())) {
+        if (genre.equals(genre.Genre) && searchValue != null) {
             songs = (ArrayList<Song>) dao.findSongsByName(searchValue);
-        } else if (searchValue == null || searchValue.length() < 1) {
-            songs = (ArrayList<Song>) dao.findSongsByGenre(genre.name());
+        } else if (searchValue == null && !genre.equals(genre.Genre)) {
+            songs = (ArrayList<Song>) dao.findSongsByGenre(genre);
+        } else if (searchValue == null && genre.equals(genre.Genre)) {
+            songs = (ArrayList<Song>) dao.findAll(Song.class);
         } else {
-            songs = (ArrayList<Song>) dao.findSongs(searchValue, genre.name());
+            songs = (ArrayList<Song>) dao.findSongs(searchValue, genre);
         }
     }
 
     public SelectModel getModel() {
         return new EnumSelectModel(Genre.class, messages);
     }
-    /*
-    public String getLink(){
-        
-    }
-    */
-    void pageReset() {
+
+    public void pageReset() {
         songs.clear();
+    }
+    
+    public boolean isLoggedin() {
+        if (user.getId() == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

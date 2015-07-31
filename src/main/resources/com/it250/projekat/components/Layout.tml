@@ -34,6 +34,9 @@
                                 <t:pagelink page="prop:pageName">${renamePage(pageName)}</t:pagelink>
                             </t:any>
                         </t:loop>
+                        <t:if test="isAdmin()">
+                            <li><t:pagelink page="adminpanel" style="color: greenyellow">Admin panel</t:pagelink></li>
+                        </t:if>
                     </ul>
                     <t:if test="!isLoggedin()">
                         <p class="navbar-text navbar-right"><t:pagelink page="login">${message:login}</t:pagelink> | <t:pagelink page="register">${message:register}</t:pagelink></p>                        
@@ -58,7 +61,7 @@
             <t:body />
 
         </div> <!-- /container -->
-        <footer class="footer navbar-fixed-bottom">
+        <footer class="footer">
             <div class="container">
                 <div class="row">
                     <br />

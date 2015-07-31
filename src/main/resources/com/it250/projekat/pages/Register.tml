@@ -1,7 +1,7 @@
-<html t:type="layout" title="Register"
+<html t:type="layout" title="${messsage:title}"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
-    <h1 class="text-center">Create your account</h1> <br/>
+    <h1 class="text-center">${message:h1-text}</h1> <br/>
     <t:beaneditform t:id="register" object="user" add="confirmPassword" exclude="id, role, createTime" class="bean col-md-offset-4 col-md-4" t:submitlabel="${message:submit}">
         <p:firstName>
             <t:textfield t:id="firstname" class="darkbox margin-bottom-3" value="firstnameValue" placeholder="${message:firstname}" />
@@ -22,5 +22,4 @@
             <t:passwordfield t:id="confirmPassword" class="darkbox margin-bottom-5" value="confpasswordValue" placeholder="${message:confirm-password}" />
         </p:confirmPassword>
     </t:beaneditform>
-    <!-- <t:grid source="users" exclude="id" /> !-->
 </html>

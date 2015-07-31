@@ -9,9 +9,9 @@
     <div class="text-center text-info">
         <h1>${message:h1-text}</h1><br></br>
         <div class="datatable-wrapper text-left text-muted">
-            <table class="jumbotron mostpopular" t:type="jquery/datatable" t:id="datatable" t:source="users" t:row="user"
+            <!--<table class="jumbotron mostpopular" t:type="jquery/datatable" t:id="datatable" t:source="users" t:row="user"
                    t:rowsPerPage="20" t:options="options" exclude="id, password, role, createTime">
-            </table>
+            </table>-->
         </div>
     </div>
 </html>

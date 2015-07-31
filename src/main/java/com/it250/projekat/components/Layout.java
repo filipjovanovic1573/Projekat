@@ -1,6 +1,7 @@
 package com.it250.projekat.components;
 
 import com.it250.projekat.entities.User;
+import com.it250.projekat.other.Role;
 import com.it250.projekat.pages.Index;
 import java.util.Locale;
 import org.apache.tapestry5.*;
@@ -70,10 +71,11 @@ public class Layout {
                 return page;
             }
         }
-
+        
         if (page.equals("AdvancedSearch")) {
             return "Advanced search";
-        } else {
+        }
+        else {
             return page;
         }
     }
@@ -84,10 +86,13 @@ public class Layout {
     }
 
     public boolean isLoggedin() {
-        if (user.getId() == null) {
-            return false;
-        } else {
-            return true;
+        return user.getId() != null;
+    }
+    
+    public boolean isAdmin(){
+        if(isLoggedin()){
+            return user.getRole().equals(Role.Admin);
         }
+        return false;
     }
 }
