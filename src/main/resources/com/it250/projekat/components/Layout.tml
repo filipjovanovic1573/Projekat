@@ -12,6 +12,7 @@
         <script src="${context:/js/jquery.js}"></script>
         <script src="${context:/mybootstrap/js/bootstrap.js}"></script>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
+
         <!-- Le styles -->
 
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -27,7 +28,7 @@
         <div class="navbar navbar-static-top navbar-inverse" role="navigation">
             <div class="container">
                 <t:pagelink page="index" class="navbar-brand"><i class="fa fa-headphones"></i> Music Store</t:pagelink>
-                <div class="navbar-collapse collapse pull-right">
+                <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <t:loop source="pageNames" value="pageName">
                             <t:any element="li" class="prop:classForPageName">
@@ -38,6 +39,9 @@
                             <li><t:pagelink page="adminpanel" style="color: greenyellow">Admin panel</t:pagelink></li>
                         </t:if>
                     </ul>
+                    <div class="navbar-text navbar-right">
+                        <t:actionlink t:id="sr"><span class="flag flag-sr"></span></t:actionlink> | <t:actionlink t:id="en"><span class="flag flag-gb"></span></t:actionlink>
+                    </div>
                     <t:if test="!isLoggedin()">
                         <p class="navbar-text navbar-right"><t:pagelink page="login">${message:login}</t:pagelink> | <t:pagelink page="register">${message:register}</t:pagelink></p>                        
                     </t:if>

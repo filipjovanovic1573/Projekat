@@ -46,7 +46,7 @@ public class Layout {
 //</editor-fold>
 
     void onActivate() {
-        persistentLocale.set(Locale.ENGLISH);
+        
     }
 
     public String getClassForPageName() {
@@ -60,7 +60,7 @@ public class Layout {
     }
 
     public String renamePage(String page) {
-        if (persistentLocale.get() != Locale.ENGLISH) {
+        if (!persistentLocale.get().getLanguage().equals("en")) {
             if (page.equals("AdvancedSearch")) {
                 return "Napredna pretraga";
             } 
@@ -94,5 +94,13 @@ public class Layout {
             return user.getRole().equals(Role.Admin);
         }
         return false;
+    }
+    
+    public void onActionFromSr(){
+        persistentLocale.set(new Locale("sr_RS"));
+    }
+    
+    public void onActionFromEn(){
+        persistentLocale.set(new Locale("en"));
     }
 }
