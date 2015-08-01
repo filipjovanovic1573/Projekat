@@ -78,6 +78,8 @@ public class Upload {
         dao.add(song);
 
         System.out.println(file.getContentType());
+        
+        System.out.println(file.getContentType());
     }
 
     public SelectModel getModel() {

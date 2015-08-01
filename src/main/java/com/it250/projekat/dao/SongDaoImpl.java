@@ -42,5 +42,10 @@ public class SongDaoImpl extends GenericDaoImpl implements SongDao{
     public List<Song> findByUserId(User user_id) {
         return session.createCriteria(Song.class).add(Restrictions.eq("userId", user_id)).list();
     }
+
+    @Override
+    public Song findById(int id) {
+        return (Song) session.createCriteria(Song.class).add(Restrictions.eq("id", id)).uniqueResult();
+    }
     
 }

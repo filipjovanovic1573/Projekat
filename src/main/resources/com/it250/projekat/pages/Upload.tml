@@ -4,7 +4,7 @@
 
     <h1 class="text-center margin-bottom-20">${message:h1}</h1>
     <form t:type="form" t:id="upload" class="col-lg-offset-4 col-md-4">
-        <input t:type="upload" t:id="file" value="file" class="margin-bottom-5"/>
+        <input t:type="upload" t:id="file" value="file" class="margin-bottom-5 darkbox"/>
         <t:textfield value="performer" class="margin-bottom-5 darkbox" placeholder="${message:performer}"/>
         <t:textarea value="details" class="margin-bottom-5 darkbox" placeholder="${message:details}"/>
         <input type="submit" value="${message:submit}" class="btn btn-success pull-right"/>

@@ -17,7 +17,7 @@
                    inPlace="true" rowsPerPage="15" exclude="id, createTime" pagerPosition="bottom" row="song" empty="${message:empty}">
                 <p:linkCell>
                     <t:if test="isLoggedin()">
-                        <a href="${song.getLink()}">${message:download}</a>
+                        <t:actionlink t:id="download" t:context="${song.getId()}" download="${song.getName()}">${message:download}</t:actionlink>
                     </t:if>
                     <t:if test="!isLoggedin()">
                          <t:pagelink page="login">${message:download-login}</t:pagelink>

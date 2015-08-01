@@ -2,7 +2,7 @@
       t:sidebarTitle="Framework Version"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter"> 
-    <t:beaneditform t:id="edit" object="editUser" exclude="id, role, createTime" class="bean col-md-offset-3 col-md-6" t:submitlabel="${message:save}">
+    <t:beaneditform t:id="edit" object="editUser" exclude="id, role, createTime" class="bean col-md-offset-3 col-md-6" t:submitlabel="${message:save}" empty="${message:empty}">
         <p:firstName>
             <t:textfield t:id="firstname" class="margin-bottom-3 darkbox" value="firstnameValue" placeholder="${message:firstname}" />
         </p:firstName>

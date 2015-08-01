@@ -20,4 +20,5 @@ public interface SongDao extends GenericDao{
     public List<Song> findSongsByName(String name);
     public List<Song> findLatest();
     public List<Song> findByUserId(User user_id);
+    public Song findById(int id);
 }

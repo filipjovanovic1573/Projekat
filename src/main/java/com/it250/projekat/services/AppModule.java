@@ -144,4 +144,8 @@ public class AppModule {
         configuration.addInstance("PageProtectionFilter", PageProtectionFilter.class);
     }
 
+    public void contributeComponentEventResultProcessor(MappedConfiguration<Class<?>, ComponentEventResultProcessor<?>> configuration, Response response) {
+        configuration.add(OutputStreamResponse.class, new OutputStreamResponseResultProcessor(response));
+    }
+
 }

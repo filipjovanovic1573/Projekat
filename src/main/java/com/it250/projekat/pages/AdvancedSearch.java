@@ -8,6 +8,7 @@ package com.it250.projekat.pages;
 import com.it250.projekat.dao.SongDao;
 import com.it250.projekat.entities.Song;
 import com.it250.projekat.entities.User;
+import com.it250.projekat.other.Common;
 import com.it250.projekat.other.Genre;
 import java.util.ArrayList;
 import org.apache.tapestry5.SelectModel;
@@ -103,5 +104,9 @@ public class AdvancedSearch {
         } else {
             return true;
         }
+    }
+    
+       public Object onActionFromDownload(int id) {
+        return Common.downloadSong(dao, id);
     }
 }

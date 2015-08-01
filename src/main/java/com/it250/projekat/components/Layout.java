@@ -9,6 +9,7 @@ import org.apache.tapestry5.annotations.*;
 import org.apache.tapestry5.ioc.annotations.*;
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.SymbolConstants;
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.services.PersistentLocale;
 
 /**
@@ -39,6 +40,9 @@ public class Layout {
     @Property
     private boolean userExists;
 
+    @Inject
+    private Messages message;
+
     @Property
     @Inject
     @Symbol(SymbolConstants.APPLICATION_VERSION)
@@ -46,7 +50,6 @@ public class Layout {
 //</editor-fold>
 
     void onActivate() {
-        
     }
 
     public String getClassForPageName() {
@@ -60,23 +63,10 @@ public class Layout {
     }
 
     public String renamePage(String page) {
-        if (!persistentLocale.get().getLanguage().equals("en")) {
-            if (page.equals("AdvancedSearch")) {
-                return "Napredna pretraga";
-            } 
-            else if(page.equals("Upload")){
-                return "Postavi pesmu";
-            }
-            else {
-                return page;
-            }
-        }
-        
         if (page.equals("AdvancedSearch")) {
-            return "Advanced search";
-        }
-        else {
-            return page;
+            return message.get("advanced_search");
+        } else {
+            return message.get("upload");
         }
     }
 
@@ -88,19 +78,19 @@ public class Layout {
     public boolean isLoggedin() {
         return user.getId() != null;
     }
-    
-    public boolean isAdmin(){
-        if(isLoggedin()){
+
+    public boolean isAdmin() {
+        if (isLoggedin()) {
             return user.getRole().equals(Role.Admin);
         }
         return false;
     }
-    
-    public void onActionFromSr(){
+
+    public void onActionFromSr() {
         persistentLocale.set(new Locale("sr_RS"));
     }
-    
-    public void onActionFromEn(){
+
+    public void onActionFromEn() {
         persistentLocale.set(new Locale("en"));
     }
 }
