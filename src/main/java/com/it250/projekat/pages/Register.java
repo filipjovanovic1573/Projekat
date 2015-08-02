@@ -8,6 +8,7 @@ package com.it250.projekat.pages;
 import com.it250.projekat.dao.UserDao;
 import com.it250.projekat.other.TrashHash;
 import com.it250.projekat.entities.User;
+import com.it250.projekat.other.Common;
 import com.it250.projekat.other.Constants;
 import com.it250.projekat.other.Role;
 import java.io.File;
@@ -107,7 +108,7 @@ public class Register {
         user.setCreateTime(new Timestamp(new Date().getTime()));
         userDao.add(user);
         new File(Constants.USER_FOLDER + usernameValue).mkdirs(); //needs rework
-        
+        Common.sendEmail(emailValue, messages.get("subject"), messages.get("message"));
         return this;
     }
 
