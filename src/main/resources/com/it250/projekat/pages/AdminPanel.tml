@@ -2,9 +2,7 @@
       t:sidebarTitle="Framework Version"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">  
-    <!-- <t:if test="!isAdmin()">
-        redirect to index 
-    </t:if>!-->
+    
     <ul id="tabs" class="nav nav-tabs nav-tabs-dark margin-bottom-20 margin-bottom-5">
         <li  class="active"><a href="#users" data-toggle="tab"><i class="glyphicon glyphicon-user"/> ${message:users}</a></li>
         <li><a href="#songs" data-toggle="tab"><i class="glyphicon glyphicon-list"/> ${message:songs}</a></li>
@@ -16,7 +14,7 @@
                 <table class="grid-dark col-md-12" t:type="grid" t:id="datatable" source="users" row="editUser"
                        rowsPerPage="20" exclude="password" add="edit" pagerPosition="bottom">
                     <p:editCell>
-                        <t:pagelink page="edit" class="darktext" context="editUser.id">${message:edit}</t:pagelink>
+                        <t:pagelink page="edit" class="darktext" t:context="editUser.id">${message:edit}</t:pagelink>
                     </p:editCell>
                 </table>
             </div>  

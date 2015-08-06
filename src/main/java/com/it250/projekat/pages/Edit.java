@@ -14,6 +14,7 @@ import javax.annotation.security.RolesAllowed;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.InjectComponent;
+import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.beaneditor.Validate;
 import org.apache.tapestry5.corelib.components.BeanEditForm;
@@ -55,7 +56,7 @@ public class Edit {
     @Validate("required, email")
     private String emailValue;
 
-    @Property
+    @Property @Persist
     private User editUser;
 
     @Inject
@@ -80,23 +81,27 @@ public class Edit {
     }
 
     void onValidateFromEdit() {
-        if (!dao.checkEmail(editUser.getEmail(), editUser.getId())) {
+        if (!dao.checkEmail(emailValue, editUser.getId())) {
             edit.recordError(mail, messages.get("edit_mail_error"));
         }
 
-        if (!dao.checkUsername(editUser.getUsername(), editUser.getId())) {
+        if (!dao.checkUsername(usernameValue, editUser.getId())) {
             edit.recordError(username, messages.get("edit_username_error"));
         }
     }
 
     @CommitAfter
     Object onSuccess() {
-        if (passwordValue.equals("")) {
+        if (passwordValue != null) {
             editUser.setPassword(TrashHash.toHash(passwordValue));
         } else {
             editUser.setPassword(editUser.getPassword());
         }
         editUser.setUsername(usernameValue);
+        editUser.setFirstName(firstnameValue);
+        editUser.setLastName(lastnameValue);
+        editUser.setEmail(emailValue);
+        editUser.setRole(role);
         dao.merge(editUser);
         
         alert.success(messages.get("edit_success"));

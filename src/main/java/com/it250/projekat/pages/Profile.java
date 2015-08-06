@@ -77,11 +77,11 @@ public class Profile {
     }
 
     void onValidateFromEdit() {
-        if (!userDao.checkEmail(user.getEmail(), user.getId())) {
+        if (!userDao.checkEmail(emailValue, user.getId())) {
             edit.recordError(mail, messages.get("profile_mail_error"));
         }
 
-        if (!userDao.checkUsername(user.getUsername(), user.getId())) {
+        if (!userDao.checkUsername(usernameValue, user.getId())) {
             edit.recordError(username, messages.get("profile_username_error"));
         }
     }
@@ -92,12 +92,15 @@ public class Profile {
 
     @CommitAfter
     Object onSuccess() {
-        if (passwordValue.equals("")) {
+        if (passwordValue != null) {
             user.setPassword(TrashHash.toHash(passwordValue));
         } else {
             user.setPassword(user.getPassword());
         }
         user.setUsername(usernameValue);
+        user.setFirstName(firstnameValue);
+        user.setEmail(emailValue);
+        user.setLastName(lastnameValue);
         userDao.merge(user);
         return null;
     }

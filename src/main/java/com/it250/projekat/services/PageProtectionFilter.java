@@ -8,9 +8,7 @@ import java.io.OutputStream;
 import javax.annotation.security.RolesAllowed;
 import org.apache.tapestry5.EventContext;
 import org.apache.tapestry5.Link;
-import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.internal.EmptyEventContext;
-import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.runtime.Component;
 import org.apache.tapestry5.services.ApplicationStateManager;
 import org.apache.tapestry5.services.ComponentEventRequestParameters;
@@ -137,5 +135,4 @@ public class PageProtectionFilter implements ComponentRequestFilter {
         }
         return authorised;
     }
-
 }

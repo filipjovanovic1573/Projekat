@@ -56,11 +56,11 @@ body {
     border-bottom: none;
 }
 
-.darkbox{
-    background: #555555;
-    color: white;
-    border-color: black;
-    outline: none;
+.darkbox, :disabled{
+    background: #555555 !important;
+    color: white !important;
+    border-color: black !important;
+    outline: none !important;
     border: none !important;
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;

@@ -9,6 +9,7 @@ import com.it250.projekat.entities.AbstractEntity;
 import java.util.List;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -32,6 +33,7 @@ public class GenericDaoImpl<T extends AbstractEntity> implements GenericDao<T> {
 
     @Override
     public void remove(int id, Class c) {
+        
     }
 
     @Override
@@ -39,4 +41,9 @@ public class GenericDaoImpl<T extends AbstractEntity> implements GenericDao<T> {
         session.merge(t);
     }
 
+    @Override
+    public void update(T t){
+        session.update(t);
+    }
+    
 }

@@ -50,9 +50,6 @@ public class Register {
     private TextField username, mail;
 
     @Property
-    private ArrayList<User> users;
-
-    @Property
     @Validate("regexp=^[A-Za-z ]+$")
     private String firstnameValue, lastnameValue;
 
@@ -76,11 +73,7 @@ public class Register {
     //</editor-fold>
 
     void onActivate() {
-        if (users == null) {
-            users = new ArrayList<User>();
-        }
-
-        users = (ArrayList<User>) userDao.findAll(User.class);
+        
     }
 
     void onValidateFromRegister() {

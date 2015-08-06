@@ -19,4 +19,5 @@ public interface GenericDao<T extends AbstractEntity> {
     public void add(T t);
     public void remove(int id, Class c);
     public void merge(T t);
+    public void update(T t);
 }

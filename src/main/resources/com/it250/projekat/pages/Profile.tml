@@ -17,7 +17,7 @@
                     <t:textfield t:id="lastname" class="margin-bottom-3 darkbox" value="lastnameValue" placeholder="${message:lastname}" />
                 </p:lastName>
                 <p:email>
-                    <t:textfield t:id="mail" class="margin-bottom-3 darkbox" value="emailValue" placeholder="${message:email}" />
+                    <t:textfield t:id="mail" disabled="true" class="margin-bottom-3 darkbox" value="emailValue" placeholder="${message:email}" />
                 </p:email>
                 <p:username>
                     <t:textfield t:id="username" class="margin-bottom-3 darkbox" value="usernameValue" placeholder="${message:username}" />

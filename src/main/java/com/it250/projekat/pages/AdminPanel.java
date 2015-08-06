@@ -6,22 +6,13 @@ import com.it250.projekat.entities.Song;
 import com.it250.projekat.entities.User;
 import com.it250.projekat.other.Common;
 import com.it250.projekat.other.Role;
-import com.it250.projekat.services.OutputStreamResponse;
 import com.it250.projekat.services.ProtectedPage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import javax.annotation.security.RolesAllowed;
-import org.apache.commons.io.IOUtils;
-import org.apache.tapestry5.StreamResponse;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.json.JSONObject;
-import org.apache.tapestry5.services.Response;
 
 /**
  *
@@ -66,15 +57,6 @@ public class AdminPanel {
             users = new ArrayList<User>();
         }
         users = (ArrayList<User>) userDao.findAll(User.class);
-    }
-
-    public JSONObject getOptions() {
-
-        // The available options are documented at http://www.datatables.net/ref
-        JSONObject options = new JSONObject();
-        options.put("bJQueryUI", "true");
-
-        return options;
     }
 
     public boolean isAdmin() {
