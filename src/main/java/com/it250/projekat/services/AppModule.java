@@ -150,7 +150,7 @@ public class AppModule {
     }
     
     public static void contributeValueEncoderSource(MappedConfiguration<Class<User>, ValueEncoderFactory<User>> configuration) { 
-        configuration.addInstance(User.class, UserEncoder.class);
+        configuration.overrideInstance(User.class, UserEncoder.class);
     }
 
 }
