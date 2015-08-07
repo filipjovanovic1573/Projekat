@@ -1,37 +1,31 @@
 package com.it250.projekat.pages;
 
-import com.it250.projekat.dao.UserDao;
-import com.it250.projekat.entities.User;
+import com.it250.projekat.dao.SongDao;
+import com.it250.projekat.entities.Song;
+import com.it250.projekat.other.Common;
 import java.util.ArrayList;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.apache.tapestry5.json.JSONObject;
 
 public class Index {
     //<editor-fold defaultstate="collapsed" desc="Properties and annotations">
     @Inject
-    private UserDao dao;
+    private SongDao dao;
 
     @Property
-    private ArrayList<User> users;
+    private ArrayList<Song> songs;
 
     @Property
-    private User user;
+    private Song song;
     //</editor-fold>
     
-    void setupRender() {
-        if (users == null) {
-            users = new ArrayList<User>();
+    void onActivate() {
+        if (songs == null) {
+            songs = new ArrayList<Song>();
         }
-        users = (ArrayList<User>) dao.findAll(User.class);
+        songs = (ArrayList<Song>) dao.findLatest();
     }
-
-    public JSONObject getOptions() {
-        // The available options are documented at http://www.datatables.net/ref
-        JSONObject options = new JSONObject();
-        options.put("bJQueryUI", "true");
-
-        return options;
+    public Object onActionFromDownload(int id) {
+        return Common.downloadSong(dao, id);
     }
-
 }

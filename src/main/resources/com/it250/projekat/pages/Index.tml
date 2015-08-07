@@ -6,12 +6,15 @@
 
     <!-- Main hero unit for a primary marketing message or call to action -->
 
-    <div class="text-center text-info">
-        <h1>${message:h1-text}</h1><br></br>
-        <div class="datatable-wrapper text-left text-muted">
-            <!--<table class="jumbotron mostpopular" t:type="jquery/datatable" t:id="datatable" t:source="users" t:row="user"
-                   t:rowsPerPage="20" t:options="options" exclude="id, password, role, createTime">
-            </table>-->
-        </div>
+    <div>
+        <h1 class="text-center text-info">${message:h1-text}</h1><br></br>
+            <table class="grid-dark col-md-12" t:type="grid" add="userId" exclude="id, createTime" source="songs" row="song" inPlace="true" rowsPerPage="20" pagerPosition="bottom">
+                <p:linkCell>
+                    <t:actionlink t:id="download" t:context="${song.getId()}" download="${song.getName()}">${message:download}</t:actionlink>
+                </p:linkCell>
+                <p:userIdCell>
+                    ${song.userId}
+                </p:userIdCell>
+            </table>
     </div>
 </html>

@@ -161,7 +161,7 @@ public class User extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "com.it250.projekat.entities.User[ id=" + id + " ]";
+        return this.getUsername();
     }
     
 }

@@ -33,7 +33,9 @@ public class GenericDaoImpl<T extends AbstractEntity> implements GenericDao<T> {
 
     @Override
     public void remove(int id, Class c) {
-        
+        Object o = session.createCriteria(c).add(Restrictions.eq("id", id)).uniqueResult();
+        session.delete(o);
+        System.out.println(o.toString());
     }
 
     @Override

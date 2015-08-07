@@ -6,6 +6,7 @@ import com.it250.projekat.dao.SongDao;
 import com.it250.projekat.dao.SongDaoImpl;
 import com.it250.projekat.dao.UserDao;
 import com.it250.projekat.dao.UserDaoImpl;
+import com.it250.projekat.entities.User;
 import java.io.IOException;
 import org.apache.tapestry5.*;
 import org.apache.tapestry5.ioc.MappedConfiguration;
@@ -146,6 +147,10 @@ public class AppModule {
 
     public void contributeComponentEventResultProcessor(MappedConfiguration<Class<?>, ComponentEventResultProcessor<?>> configuration, Response response) {
         configuration.add(OutputStreamResponse.class, new OutputStreamResponseResultProcessor(response));
+    }
+    
+    public static void contributeValueEncoderSource(MappedConfiguration<Class<User>, ValueEncoderFactory<User>> configuration) { 
+        configuration.addInstance(User.class, UserEncoder.class);
     }
 
 }
