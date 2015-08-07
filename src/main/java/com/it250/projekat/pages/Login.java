@@ -7,6 +7,8 @@ import com.it250.projekat.other.TrashHash;
 import java.io.File;
 import java.util.ArrayList;
 import org.apache.tapestry5.alerts.AlertManager;
+import org.apache.tapestry5.alerts.Duration;
+import org.apache.tapestry5.alerts.Severity;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
@@ -78,7 +80,7 @@ public class Login {
     Object onSuccess() {
         user = userDao.checkUser(emailValue, TrashHash.toHash(passwordValue));
         if(!userExists){
-            alertManager.error(messages.get("login_user_not_found"));
+            alertManager.alert(Duration.TRANSIENT, Severity.ERROR, messages.get("login_user_not_found"));
             return this;
         }
         

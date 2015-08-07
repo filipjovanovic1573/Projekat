@@ -99,11 +99,7 @@ public class AdvancedSearch {
     }
     
     public boolean isLoggedin() {
-        if (user.getId() == null) {
-            return false;
-        } else {
-            return true;
-        }
+        return user.getId() != null;
     }
     
        public Object onActionFromDownload(int id) {

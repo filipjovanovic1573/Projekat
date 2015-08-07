@@ -13,6 +13,8 @@ import com.it250.projekat.services.ProtectedPage;
 import javax.annotation.security.RolesAllowed;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.alerts.AlertManager;
+import org.apache.tapestry5.alerts.Duration;
+import org.apache.tapestry5.alerts.Severity;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
@@ -104,12 +106,12 @@ public class Edit {
         editUser.setRole(role);
         dao.merge(editUser);
         
-        alert.success(messages.get("edit_success"));
+        alert.alert(Duration.TRANSIENT, Severity.ERROR, messages.get("edit_success"));
         return AdminPanel.class;
     }
 
     Object onFailureFromEdit() {
-        alert.error(messages.get("edit_error"));
+        alert.alert(Duration.TRANSIENT, Severity.ERROR, messages.get("edit_error"));
         return null;
     }
 

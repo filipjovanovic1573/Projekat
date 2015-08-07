@@ -14,9 +14,14 @@ import com.it250.projekat.services.ProtectedPage;
 import java.io.File;
 import javax.annotation.security.RolesAllowed;
 import org.apache.tapestry5.SelectModel;
+import org.apache.tapestry5.alerts.AlertManager;
+import org.apache.tapestry5.alerts.Duration;
+import org.apache.tapestry5.alerts.Severity;
+import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.beaneditor.Validate;
+import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -34,12 +39,15 @@ public class Upload {
 
     //<editor-fold defaultstate="collapsed" desc="Properties and annotations">
 
-    @Property
+    @Property @Validate("required")
     private UploadedFile file;
-
+    
     @Property
     @Validate("maxlength=500")
     private String details;
+    
+    @InjectComponent
+    private Form upload;
 
     @Property
     private String performer;
@@ -48,6 +56,9 @@ public class Upload {
     @Validate("required")
     private Genre genre;
 
+    @Inject
+    private AlertManager alertManager;
+    
     @Inject
     private Messages messages;
 
@@ -62,6 +73,19 @@ public class Upload {
     private String uploadFolder = Constants.USER_FOLDER + user.getUsername() + "\\";
 
     //</editor-fold>
+    
+    void onValidateFromUpload(){
+        if(!file.getContentType().equals("audio/mp3")){
+            upload.recordError("InvalidFormat");
+            alertManager.alert(Duration.TRANSIENT, Severity.ERROR, messages.get("invalid_format"));
+        }
+        
+        if(genre.equals(Genre.Genre)){
+            upload.recordError("genre_error");
+            alertManager.alert(Duration.TRANSIENT, Severity.ERROR, messages.get("invalid_genre"));
+        }
+    }
+    
     @CommitAfter
     void onSuccessFromUpload() {
         song = new Song();

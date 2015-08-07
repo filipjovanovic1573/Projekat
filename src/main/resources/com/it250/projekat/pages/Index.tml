@@ -8,13 +8,18 @@
 
     <div>
         <h1 class="text-center text-info">${message:h1-text}</h1><br></br>
-            <table class="grid-dark col-md-12" t:type="grid" add="userId" exclude="id, createTime" source="songs" row="song" inPlace="true" rowsPerPage="20" pagerPosition="bottom">
-                <p:linkCell>
+        <table class="grid-dark col-md-12" t:type="grid" add="userId" exclude="id, createTime" source="songs" row="song" inPlace="true" rowsPerPage="20" pagerPosition="bottom">
+            <p:linkCell>
+                <t:if test="isLoggedin()">
                     <t:actionlink t:id="download" t:context="${song.getId()}" download="${song.getName()}">${message:download}</t:actionlink>
-                </p:linkCell>
-                <p:userIdCell>
-                    ${song.userId}
-                </p:userIdCell>
-            </table>
+                </t:if>
+                <t:if test="!isLoggedin()">
+                    <t:pagelink page="login">${message:download-login}</t:pagelink>
+                </t:if> 
+            </p:linkCell>
+            <p:userIdCell>
+                ${song.userId}
+            </p:userIdCell>
+        </table>
     </div>
 </html>
