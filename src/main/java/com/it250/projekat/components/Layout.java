@@ -2,6 +2,7 @@ package com.it250.projekat.components;
 
 import com.it250.projekat.entities.User;
 import com.it250.projekat.other.Role;
+import com.it250.projekat.other.Style;
 import com.it250.projekat.pages.Index;
 import java.util.Locale;
 import org.apache.tapestry5.*;
@@ -16,7 +17,7 @@ import org.apache.tapestry5.services.PersistentLocale;
  * Layout component for pages of application test-project.
  */
 //
-@Import(module = "bootstrap/collapse", stylesheet = "context:/css/auxiliary.css")
+@Import(module = "bootstrap/collapse")
 public class Layout {
 
     //<editor-fold defaultstate="collapsed" desc="Properties and annotations">
@@ -25,6 +26,14 @@ public class Layout {
 
     @Inject
     private PersistentLocale persistentLocale;
+
+    @Inject
+    @Path("context:css/auxiliary.css")
+    private Asset darkTheme;
+
+    @Inject
+    @Path("context:css/auxiliaryw.css")
+    private Asset lightTheme;
 
     @Property
     @Parameter(required = true, defaultPrefix = BindingConstants.LITERAL)
@@ -92,5 +101,19 @@ public class Layout {
 
     public void onActionFromEn() {
         persistentLocale.set(new Locale("en"));
+    }
+
+    public Asset getStyle() {
+        if (isLoggedin() != false) {
+            if (user.getStyle().equals(Style.Dark)) {
+                return darkTheme;
+            } else if (user.getStyle().equals(Style.Light)) {
+                return lightTheme;
+            } else {
+                return darkTheme;
+            }
+        } else {
+            return darkTheme;
+        }
     }
 }

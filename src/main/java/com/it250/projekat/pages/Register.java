@@ -11,6 +11,7 @@ import com.it250.projekat.entities.User;
 import com.it250.projekat.other.Common;
 import com.it250.projekat.other.Constants;
 import com.it250.projekat.other.Role;
+import com.it250.projekat.other.Style;
 import java.io.File;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -98,6 +99,7 @@ public class Register {
         user.setUsername(usernameValue);
         user.setPassword(TrashHash.toHash(passwordValue));
         user.setRole(Role.Korisnik);
+        user.setStyle(Style.Dark);
         user.setCreateTime(new Timestamp(new Date().getTime()));
         userDao.add(user);
         new File(Constants.USER_FOLDER + usernameValue).mkdirs(); //needs rework

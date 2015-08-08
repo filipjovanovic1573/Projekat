@@ -29,7 +29,7 @@
 }
 
 body {
-    background-color: #333;
+    background-color: #333 !important;
     color: white;
 }
 
@@ -37,9 +37,9 @@ body {
 .nav-tabs-dark > li.active > a, 
 .nav-tabs-dark > li.active > a:hover, 
 .nav-tabs-dark > li.active > a:focus{
-    background-color: #333;
-    color: #fff;
-    border: none;
+    background-color: #333 !important;
+    color: #fff !important;
+    border: none !important; 
     text-decoration: none;
 }
 .nav-tabs-dark > li > a{
@@ -53,7 +53,7 @@ body {
 }
 
 .nav-tabs {
-    border-bottom: none;
+    border-bottom: none !important;
 }
 
 .darkbox, :disabled{

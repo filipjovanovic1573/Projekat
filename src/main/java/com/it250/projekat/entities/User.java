@@ -6,6 +6,7 @@
 package com.it250.projekat.entities;
 
 import com.it250.projekat.other.Role;
+import com.it250.projekat.other.Style;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -48,6 +49,9 @@ public class User extends AbstractEntity {
     @Basic(optional = false)
     @Column(name = "role")
     private Role role;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "style")
+    private Style style;
     @Column(name = "create_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
@@ -126,6 +130,14 @@ public class User extends AbstractEntity {
         this.role = role;
     }
 
+    public Style getStyle() {
+        return style;
+    }
+
+    public void setStyle(Style style) {
+        this.style = style;
+    }
+    
     public Date getCreateTime() {
         return createTime;
     }

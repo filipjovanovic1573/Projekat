@@ -9,8 +9,10 @@ import com.it250.projekat.dao.SongDao;
 import com.it250.projekat.dao.UserDao;
 import com.it250.projekat.entities.Song;
 import com.it250.projekat.entities.User;
+import com.it250.projekat.other.Style;
 import com.it250.projekat.other.TrashHash;
 import java.util.ArrayList;
+import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
@@ -20,6 +22,7 @@ import org.apache.tapestry5.corelib.components.TextField;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.util.EnumSelectModel;
 
 public class Profile {
 
@@ -33,6 +36,10 @@ public class Profile {
     @Property
     @SessionState
     private User user;
+    
+    @Property
+    @Validate("required")
+    private Style style;
 
     @Property
     @Validate("regexp=^[A-Za-z ]+$")
@@ -101,6 +108,7 @@ public class Profile {
         user.setFirstName(firstnameValue);
         user.setEmail(emailValue);
         user.setLastName(lastnameValue);
+        user.setStyle(style);
         userDao.merge(user);
         return null;
     }
@@ -110,5 +118,10 @@ public class Profile {
         lastnameValue = user.getLastName();
         emailValue = user.getEmail();
         usernameValue = user.getUsername();
+        style = user.getStyle();
+    }
+    
+    public SelectModel getModel() {
+        return new EnumSelectModel(Style.class, messages);
     }
 }

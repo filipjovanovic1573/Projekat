@@ -4,7 +4,7 @@
     <h1 class="text-center">${message:h1-text}</h1> <br/>
     <div class="row">
         <div class="col-md-offset-4 col-md-4">
-            <t:beaneditform t:id="login" object="user" exclude="id, role, createTime, firstName, lastName, username" class="bean" t:submitlabel="${message:submit}">
+            <t:beaneditform t:id="login" object="user" exclude="id, role, createTime, firstName, lastName, username, style" class="bean" t:submitlabel="${message:submit}">
                 <p:email>
                     <t:textfield t:id="mail" class="darkbox margin-bottom-3" value="emailValue" placeholder="${message:email}" />
                 </p:email>
