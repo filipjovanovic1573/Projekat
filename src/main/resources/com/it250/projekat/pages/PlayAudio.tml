@@ -3,7 +3,7 @@
       xmlns:p="tapestry:parameter">
     <ul class="list-inline">
         <li class="top-text"><p>${user.id}</p></li>
-        <li><textarea class="comment" disabled="true"></textarea></li>
+        <li><textarea class="comment" disabled="true">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</textarea></li>
     </ul>
     <table t:type="grid" source="comments"/>
 </html>

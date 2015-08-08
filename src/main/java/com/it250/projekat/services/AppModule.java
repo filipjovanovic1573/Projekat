@@ -1,5 +1,7 @@
 package com.it250.projekat.services;
 
+import com.it250.projekat.dao.CommentDao;
+import com.it250.projekat.dao.CommentDaoImpl;
 import com.it250.projekat.dao.GenericDao;
 import com.it250.projekat.dao.GenericDaoImpl;
 import com.it250.projekat.dao.SongDao;
@@ -30,6 +32,7 @@ public class AppModule {
         binder.bind(GenericDao.class, GenericDaoImpl.class);
         binder.bind(UserDao.class, UserDaoImpl.class);
         binder.bind(SongDao.class, SongDaoImpl.class);
+        binder.bind(CommentDao.class, CommentDaoImpl.class);
         // binder.bind(MyServiceInterface.class, MyServiceImpl.class);
 
         // Make bind() calls on the binder object to define most IoC services.

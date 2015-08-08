@@ -4,6 +4,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.it250.projekat.entities.User</class>
     <class>com.it250.projekat.entities.Song</class>
+    <class>com.it250.projekat.entities.Comment</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/it250proj?zeroDateTimeBehavior=convertToNull"/>

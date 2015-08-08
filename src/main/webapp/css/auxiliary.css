@@ -162,9 +162,7 @@ select{
 }
 
 .comment{
-    min-height: 120px;
-    min-width: 350px;
-    height: 150px;
+    height: 60px;
     width: 500px;
     resize: none;
 }
