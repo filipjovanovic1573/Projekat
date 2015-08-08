@@ -30,7 +30,7 @@
 
 body {
     background-color: #333 !important;
-    color: white;
+    color: white !important;
 }
 
 .nav-tabs-dark > li > a:hover,
@@ -155,4 +155,16 @@ select{
 
 .flag-gb{
     background-image: url(../flags/gb.svg);
+}
+
+.top-text{
+    vertical-align: top !important;
+}
+
+.comment{
+    min-height: 120px;
+    min-width: 350px;
+    height: 150px;
+    width: 500px;
+    resize: none;
 }
