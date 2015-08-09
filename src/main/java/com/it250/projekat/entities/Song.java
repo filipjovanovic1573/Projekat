@@ -46,6 +46,8 @@ public class Song extends AbstractEntity {
     private Date createTime;
     @Column(name = "link")
     private String link;
+    @Column(name = "context_path")
+    private String contextPath;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User userId;
@@ -119,6 +121,14 @@ public class Song extends AbstractEntity {
         this.link = link;
     }
 
+    public String getContextPath() {
+        return contextPath;
+    }
+
+    public void setContextPath(String contextPath) {
+        this.contextPath = contextPath;
+    }
+    
     public User getUserId() {
         return userId;
     }

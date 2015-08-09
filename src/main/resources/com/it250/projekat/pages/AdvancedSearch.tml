@@ -14,7 +14,7 @@
         <br/>
         <div class="col-md-12">
             <table class="grid-dark col-md-12" t:type="grid" source="songs" 
-                   inPlace="true" rowsPerPage="15" exclude="id, createTime" pagerPosition="bottom" row="song" empty="${message:empty}">
+                   inPlace="true" rowsPerPage="15" exclude="id, createTime, contextPath" pagerPosition="bottom" row="song" empty="${message:empty}">
                 <p:nameCell>
                     <t:pagelink page="playaudio" context="song">${song.name}</t:pagelink>
                 </p:nameCell>

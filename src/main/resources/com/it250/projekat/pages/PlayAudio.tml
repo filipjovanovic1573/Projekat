@@ -1,24 +1,36 @@
+<!DOCTYPE html>
 <html t:type="layout" title="${song.name}"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
+    <!-- <script src="${context:/js/audioplayer.min.js}"></script>
+        <script src="${context:/css/reset.css}"></script>
+        <script src="${context:/css/audioplayer.css}"></script>-->
+
+    <div class="col-md-offset-4">
+        <audio src="${file}" preload="auto" controls="true">
+        </audio>
+    </div>
+    <br /> <br /> <br />
     <div class="col-md-offset-3">
-        <div class="row">
-            <form t:type="form" t:id="form" async="true" class="col-md-6 margin-bottom-20">
-                <div class="comment-nobefore">
-                    <t:textarea value="commenttext" class="margin-bottom-5 darkbox" placeholder="Text"/>
-                </div>
-                <input type="submit" value="${message:submit}" class="btn btn-success pull-right"/>
-            </form>
-        </div>
-        <br /> <br /> <br /> <br />
+        <t:if test="isLoggedin()">
+            <div class="row">
+                <form t:type="form" t:id="form" async="true" class="col-md-6 margin-bottom-20">
+                    <div class="comment-nobefore">
+                        <t:textarea value="commenttext" class="margin-bottom-5 darkbox" placeholder="${message:text}"/>
+                    </div>
+                    <input type="submit" value="${message:submit}" class="btn btn-success pull-right"/>
+                </form>
+            </div>
+        </t:if>
+        <br /> <br /> <br />
         <div class="row">
             <t:zone t:id="commentzone">
-                <table t:type="grid" source="comments" row="comment" inPlace="true" rowsPerPage="5" pagerPosition="bottom" class="table-comments grid-dark" exclude="id" reorder="userId, tdd, text" add="userId, tdd">
+                <table t:type="grid" source="comments" row="comment" inPlace="true" rowsPerPage="5" pagerPosition="bottom" 
+                       class="table-comments grid-dark" exclude="id" reorder="userId, tdd, text" add="userId, tdd" empty="${message:empty}">
                     <p:userIdCell>
                         <p class="margin-right-5">${comment.userId}</p>
                     </p:userIdCell>
                     <tddCell>
-                        
                     </tddCell>
                     <p:textCell>
                         <div class="comment">

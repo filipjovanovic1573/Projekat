@@ -22,7 +22,7 @@
 
         <div id="songs" class="tab-pane collapse">
             <table class="grid-dark col-md-12" t:type="grid" source="songs" 
-                   inPlace="true" rowsPerPage="15" exclude="id, createTime" pagerPosition="bottom" row="song">
+                   inPlace="true" rowsPerPage="15" exclude="id, createTime, contextPath" pagerPosition="bottom" row="song">
                 <p:nameCell>
                     <t:pagelink page="playaudio" context="song">${song.name}</t:pagelink>
                 </p:nameCell>

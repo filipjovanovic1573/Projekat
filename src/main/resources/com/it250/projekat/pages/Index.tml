@@ -8,7 +8,7 @@
 
     <div>
         <h1 class="text-center text-info">${message:h1-text}</h1><br></br>
-        <table class="grid-dark col-md-12" t:type="grid" add="userId" exclude="id, createTime" source="songs" row="song" inPlace="true" rowsPerPage="20" pagerPosition="bottom">
+        <table class="grid-dark col-md-12" t:type="grid" add="userId" exclude="id, createTime, contextPath" source="songs" row="song" inPlace="true" rowsPerPage="20" pagerPosition="bottom">
             <p:nameCell>
                 <t:pagelink page="playaudio" context="song">${song.name}</t:pagelink>
             </p:nameCell>

@@ -10,7 +10,6 @@ import com.it250.projekat.entities.Comment;
 import com.it250.projekat.entities.Song;
 import com.it250.projekat.entities.User;
 import java.util.ArrayList;
-import org.apache.tapestry5.annotations.ActivationRequestParameter;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
@@ -18,6 +17,7 @@ import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.beaneditor.Validate;
 import org.apache.tapestry5.corelib.components.Zone;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
+import org.apache.tapestry5.ioc.Resource;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.ajax.AjaxResponseRenderer;
@@ -32,7 +32,8 @@ public class PlayAudio {
     @SessionState
     private User user;
 
-    @Property @Persist
+    @Property
+    @Persist
     private ArrayList<Comment> comments;
 
     @Inject
@@ -56,8 +57,11 @@ public class PlayAudio {
 
     @Property
     private Song song;
-
+    
+    private String path = "http://localhost:8080/musicstore/dir";
+    
     void onActivate(Song s) {
+        song = null;
         song = s;
     }
 
@@ -86,6 +90,13 @@ public class PlayAudio {
             ajax.addRender(commentzone);
         }
     }
-    
+
+    public boolean isLoggedin() {
+        return user.getId() != null;
+    }
+
+    public String getFile(){
+        return path + song.getContextPath();
+    }
     
 }

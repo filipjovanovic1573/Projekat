@@ -72,6 +72,7 @@ public class Upload {
     private Song song;
 
     private String uploadFolder = Constants.USER_FOLDER + user.getUsername() + "\\";
+    private String contextPath = "/" + user.getUsername() + "/";
 
     //</editor-fold>
     
@@ -100,6 +101,7 @@ public class Upload {
         file.write(tmp);
 
         song.setLink(tmp.getPath());
+        song.setContextPath(contextPath + file.getFileName());
         dao.add(song);
 
         System.out.println(file.getContentType());
