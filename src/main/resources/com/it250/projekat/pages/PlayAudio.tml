@@ -1,9 +1,15 @@
 <html t:type="layout" title="${message:title}"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
-    <ul class="list-inline">
-        <li class="top-text"><p>${user.id}</p></li>
-        <li><textarea class="comment" disabled="true">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</textarea></li>
-    </ul>
-    <table t:type="grid" source="comments"/>
+    
+    <table t:type="grid" source="comments" row="comment" class="table-comments grid-dark" exclude="id" reorder="userId, text" add="userId">
+        <p:userIdCell>
+            <p class="margin-right-5">${comment.userId}</p>
+        </p:userIdCell>
+        <p:textCell>
+            <div class="comment">
+                <textarea disabled="true">${comment.text}</textarea>
+            </div>
+        </p:textCell>
+    </table>
 </html>

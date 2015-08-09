@@ -20,6 +20,10 @@
     margin-right: 3px;
 }
 
+.margin-right-5{
+    margin-right: 5px;
+}
+
 .margin-bottom-5{
     margin-bottom: 5px;
 }
@@ -157,12 +161,41 @@ select{
     background-image: url(../flags/gb.svg);
 }
 
-.top-text{
-    vertical-align: top !important;
+.comment{
+    position: relative;
+    width: 500px;
+    height: 70px;
 }
 
-.comment{
-    height: 60px;
-    width: 500px;
+.comment:before{
+    content:"";
+    position: absolute;
+    right: 100%;
+    top: 1px;
+    width: 0;
+    height: 0;
+
+    border-top: 9px solid transparent;
+    border-right: 9px solid #555555 !important;
+    border-bottom: 9px solid transparent;
+}
+
+.comment textarea{
+    height: inherit;
+    width: inherit;
     resize: none;
+    border: 1px;
+    border-radius: 3px;
+}
+
+.table-comments{
+
+}
+
+.table-comments thead{
+    display: none;
+}
+
+.table-comments tbody td{
+    vertical-align: top !important;
 }

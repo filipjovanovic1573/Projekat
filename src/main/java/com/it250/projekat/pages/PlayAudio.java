@@ -30,6 +30,9 @@ public class PlayAudio {
     private CommentDao dao;
     
     @Property
+    private Comment comment;
+    
+    @Property
     private Song song;
     
     void onActivate(Song s){

@@ -28,6 +28,9 @@ public class Comment extends AbstractEntity{
     @JoinColumn(name = "song_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Song songId;
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private User userId;
 
     @Inject
     public Comment() {
@@ -37,6 +40,12 @@ public class Comment extends AbstractEntity{
         this.id = id;
     }
 
+    public Comment(String text, Song songId, User userId) {
+        this.text = text;
+        this.songId = songId;
+        this.userId = userId;
+    }
+    
     public Integer getId() {
         return id;
     }
@@ -59,6 +68,14 @@ public class Comment extends AbstractEntity{
 
     public void setSongId(Song songId) {
         this.songId = songId;
+    }
+
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
+        this.userId = userId;
     }
     
     @Override
