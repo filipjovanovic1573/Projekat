@@ -36,6 +36,9 @@
             <div class="col-md-12">
                 <table class="grid-dark col-md-12" t:type="grid" source="uploaded" 
                        inPlace="true" rowsPerPage="15" exclude="id, createTime" pagerPosition="bottom" row="song" empty="${message:empty}">
+                    <p:nameCell>
+                        <t:pagelink page="playaudio" context="song">${song.name}</t:pagelink>
+                    </p:nameCell>
                     <p:linkCell>
                         <a href="${song.getLink()}">${message:download}</a>
                     </p:linkCell>

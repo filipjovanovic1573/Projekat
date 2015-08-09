@@ -143,8 +143,6 @@ select{
 }
 
 .footer{
-    position:absolute;
-    bottom: 0;
     width: 100%;
 }
 .flag:before {
@@ -166,4 +164,45 @@ select{
 
 .flag-gb{
     background-image: url(../flags/gb.svg);
+}
+
+.comment{
+    position: relative;
+    width: 300px;
+    height: 70px;
+    min-width: 100px;
+}
+
+.comment:before{
+    content:"";
+    position: absolute;
+    right: 100%;
+    top: 1px;
+    width: 0;
+    height: 0;
+
+    border-top: 9px solid transparent;
+    border-right: 9px solid lightblue !important;
+    border-bottom: 9px solid transparent;
+}
+
+.comment textarea{
+    height: 70px;
+    width: 370px;
+    min-width: 100px;
+    resize: none;
+    border: 1px;
+    border-radius: 3px;
+}
+
+.table-comments thead{
+    display: none;
+}
+
+.table-comments tbody td{
+    vertical-align: top !important;
+}
+
+input:disabled, textarea:disabled{
+    background-color: lightblue;
 }

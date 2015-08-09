@@ -2,7 +2,7 @@
       t:sidebarTitle="Framework Version"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">  
-    
+
     <ul id="tabs" class="nav nav-tabs nav-tabs-dark margin-bottom-20 margin-bottom-5">
         <li  class="active"><a href="#users" data-toggle="tab"><i class="glyphicon glyphicon-user"/> ${message:users}</a></li>
         <li><a href="#songs" data-toggle="tab"><i class="glyphicon glyphicon-list"/> ${message:songs}</a></li>
@@ -23,6 +23,9 @@
         <div id="songs" class="tab-pane collapse">
             <table class="grid-dark col-md-12" t:type="grid" source="songs" 
                    inPlace="true" rowsPerPage="15" exclude="id, createTime" pagerPosition="bottom" row="song">
+                <p:nameCell>
+                    <t:pagelink page="playaudio" context="song">${song.name}</t:pagelink>
+                </p:nameCell>
                 <p:linkCell>
                     <t:actionlink t:id="download" t:context="${song.getId()}" download="${song.getName()}">${message:download}</t:actionlink>
                 </p:linkCell>

@@ -1,15 +1,32 @@
-<html t:type="layout" title="${message:title}"
+<html t:type="layout" title="${song.name}"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
-    
-    <table t:type="grid" source="comments" row="comment" class="table-comments grid-dark" exclude="id" reorder="userId, text" add="userId">
-        <p:userIdCell>
-            <p class="margin-right-5">${comment.userId}</p>
-        </p:userIdCell>
-        <p:textCell>
-            <div class="comment">
-                <textarea disabled="true">${comment.text}</textarea>
-            </div>
-        </p:textCell>
-    </table>
+    <div class="col-md-offset-3">
+        <div class="row">
+            <form t:type="form" t:id="form" async="true" class="col-md-6 margin-bottom-20">
+                <div class="comment-nobefore">
+                    <t:textarea value="commenttext" class="margin-bottom-5 darkbox" placeholder="Text"/>
+                </div>
+                <input type="submit" value="${message:submit}" class="btn btn-success pull-right"/>
+            </form>
+        </div>
+        <br /> <br /> <br /> <br />
+        <div class="row">
+            <t:zone t:id="commentzone">
+                <table t:type="grid" source="comments" row="comment" inPlace="true" rowsPerPage="5" pagerPosition="bottom" class="table-comments grid-dark" exclude="id" reorder="userId, tdd, text" add="userId, tdd">
+                    <p:userIdCell>
+                        <p class="margin-right-5">${comment.userId}</p>
+                    </p:userIdCell>
+                    <tddCell>
+                        
+                    </tddCell>
+                    <p:textCell>
+                        <div class="comment">
+                            <textarea disabled="true">${comment.text}</textarea>
+                        </div>
+                    </p:textCell>
+                </table>
+            </t:zone>
+        </div>
+    </div>
 </html>
