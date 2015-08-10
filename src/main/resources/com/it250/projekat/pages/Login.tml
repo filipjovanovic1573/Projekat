@@ -14,5 +14,4 @@
             </t:beaneditform>
         </div>
     </div>
-   <!-- <t:grid source="users" exclude="id" rowsPerPage="1"/> !-->
 </html>

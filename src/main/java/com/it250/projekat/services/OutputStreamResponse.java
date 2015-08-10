@@ -26,11 +26,5 @@ public interface OutputStreamResponse {
      */
     public void writeToStream(OutputStream out) throws IOException;
 
-    /**
-     * Prepares the response before it is sent to the client. This is the place to set any response headers (e.g.
-     * content-disposition).
-     *
-     * @param response Response that will be sent.
-     */
     void prepareResponse(Response response);
 }

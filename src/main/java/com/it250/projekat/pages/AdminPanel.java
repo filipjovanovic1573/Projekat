@@ -46,9 +46,6 @@ public class AdminPanel {
     @Persist
     private ArrayList<Song> songs;
 
-    @Property
-    private boolean userExists;
-
     void onActivate() {
         if (songs == null) {
             songs = new ArrayList<Song>();

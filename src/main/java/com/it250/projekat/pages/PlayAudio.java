@@ -76,7 +76,6 @@ public class PlayAudio {
 
     @CommitAfter
     void onSuccessFromForm() {
-        System.out.println(song.getName());
         Comment c = new Comment();
         c.setSongId(song);
         c.setUserId(user);

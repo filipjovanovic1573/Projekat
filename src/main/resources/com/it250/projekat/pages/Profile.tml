@@ -40,7 +40,7 @@
                         <t:pagelink page="playaudio" context="song">${song.name}</t:pagelink>
                     </p:nameCell>
                     <p:linkCell>
-                        <a href="${song.getLink()}">${message:download}</a>
+                        <t:actionlink t:id="download" t:context="${song.getId()}" download="${song.getName()}">${message:download}</t:actionlink>
                     </p:linkCell>
                 </table>
             </div>

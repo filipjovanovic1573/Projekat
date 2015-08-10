@@ -51,7 +51,6 @@ public class AdvancedSearch {
     private Song song;
 
     @Property
-    @Persist
     private ArrayList<Song> songs;
 
     @Inject
@@ -65,16 +64,10 @@ public class AdvancedSearch {
         if (songs == null) {
             songs = new ArrayList<Song>();
         }
-        //songs = (ArrayList<Song>) dao.findAll(Song.class);
     }
 
     Object onSuccessFromSearchform() {
         checkInput();
-       /* if (songs == null || songs.size() < 1) {
-            return this;
-        }
-        return this;*/
-        System.out.println(searchValue + " " + genre);
         return this;
     }
 
@@ -92,10 +85,6 @@ public class AdvancedSearch {
 
     public SelectModel getModel() {
         return new EnumSelectModel(Genre.class, messages);
-    }
-
-    public void pageReset() {
-        songs.clear();
     }
     
     public boolean isLoggedin() {

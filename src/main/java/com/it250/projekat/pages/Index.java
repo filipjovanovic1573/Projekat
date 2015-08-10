@@ -10,7 +10,9 @@ import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 public class Index {
+
     //<editor-fold defaultstate="collapsed" desc="Properties and annotations">
+
     @Inject
     private SongDao dao;
 
@@ -19,20 +21,22 @@ public class Index {
 
     @Property
     private Song song;
-    
+
     @SessionState
     private User user;
     //</editor-fold>
-    
+
     void onActivate() {
         if (songs == null) {
             songs = new ArrayList<Song>();
         }
         songs = (ArrayList<Song>) dao.findLatest();
     }
+
     public Object onActionFromDownload(int id) {
         return Common.downloadSong(dao, id);
     }
+
     public boolean isLoggedin() {
         return user.getId() != null;
     }

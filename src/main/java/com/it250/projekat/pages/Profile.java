@@ -9,6 +9,7 @@ import com.it250.projekat.dao.SongDao;
 import com.it250.projekat.dao.UserDao;
 import com.it250.projekat.entities.Song;
 import com.it250.projekat.entities.User;
+import com.it250.projekat.other.Common;
 import com.it250.projekat.other.Style;
 import com.it250.projekat.other.TrashHash;
 import java.util.ArrayList;
@@ -123,5 +124,9 @@ public class Profile {
     
     public SelectModel getModel() {
         return new EnumSelectModel(Style.class, messages);
+    }
+    
+    public Object onActionFromDownload(int id) {
+        return Common.downloadSong(songDao, id);
     }
 }
