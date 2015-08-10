@@ -17,7 +17,8 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao {
 
     @Override
     public User checkUser(String email, String password) {
-        return (User) session.createCriteria(User.class).add(Restrictions.eq("email", email)).add(Restrictions.eq("password", password)).uniqueResult();
+        return (User) session.createCriteria(User.class).add(Restrictions.eq("email", email))
+                .add(Restrictions.eq("password", password)).uniqueResult();
     }
 
     @Override

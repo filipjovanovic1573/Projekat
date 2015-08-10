@@ -22,13 +22,16 @@
 
         <div id="songs" class="tab-pane collapse">
             <table class="grid-dark col-md-12" t:type="grid" source="songs" 
-                   inPlace="true" rowsPerPage="15" exclude="id, createTime, contextPath" pagerPosition="bottom" row="song">
+                   inPlace="true" rowsPerPage="15" add="del" exclude="id, createTime, contextPath" pagerPosition="bottom" row="song">
                 <p:nameCell>
                     <t:pagelink page="playaudio" context="song">${song.name}</t:pagelink>
                 </p:nameCell>
                 <p:linkCell>
                     <t:actionlink t:id="download" t:context="${song.getId()}" download="${song.getName()}">${message:download}</t:actionlink>
                 </p:linkCell>
+                <p:delCell>
+                    <t:actionlink t:id="delete" t:context="song"><i class="glyphicon glyphicon-remove"/></t:actionlink>
+                </p:delCell>
             </table>
         </div>
     </div>

@@ -24,7 +24,6 @@
             <version>${slf4j-release-version}</version>
         </dependency>
         
-        
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-hibernate</artifactId>
