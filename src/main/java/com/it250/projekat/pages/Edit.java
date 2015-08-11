@@ -106,7 +106,7 @@ public class Edit {
         editUser.setRole(role);
         dao.merge(editUser);
         
-        alert.alert(Duration.TRANSIENT, Severity.ERROR, messages.get("edit_success"));
+        alert.alert(Duration.TRANSIENT, Severity.SUCCESS, messages.get("edit_success"));
         return AdminPanel.class;
     }
 

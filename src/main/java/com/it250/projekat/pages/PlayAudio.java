@@ -57,16 +57,14 @@ public class PlayAudio {
 
     @Property
     private Song song;
-    
+
     private String path = "http://localhost:8080/musicstore/dir";
-    
+
     void onActivate(Song s) {
-        song = null;
         song = s;
     }
 
     void setupRender() {
-        System.out.println(song.getName());
         if (comments == null) {
             comments = new ArrayList<Comment>();
         }
@@ -97,5 +95,4 @@ public class PlayAudio {
     public String getFile(){
         return path + song.getContextPath();
     }
-    
 }

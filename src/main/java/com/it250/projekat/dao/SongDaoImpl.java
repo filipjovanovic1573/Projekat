@@ -30,7 +30,7 @@ public class SongDaoImpl extends GenericDaoImpl implements SongDao{
 
     @Override
     public List<Song> findSongsByName(String name) {
-        return session.createCriteria(Song.class).add(Restrictions.ilike("name", name)).list();
+        return session.createCriteria(Song.class).add(Restrictions.like("name", name)).list();
     }
 
     @Override

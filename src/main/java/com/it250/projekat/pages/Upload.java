@@ -91,7 +91,7 @@ public class Upload {
     @CommitAfter
     void onSuccessFromUpload() {
         song = new Song();
-        song.setName(file.getFileName());
+        song.setName(file.getFileName().replace(".mp3", ""));
         song.setGenre(genre);
         song.setPerformer(performer);
         song.setDetails(details);

@@ -2,7 +2,7 @@
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
     <h1 class="text-center">${message:h1-text}</h1> <br/>
-    <t:beaneditform t:id="register" object="user" add="confirmPassword" exclude="id, role, createTime" class="bean col-md-offset-4 col-md-4" t:submitlabel="${message:submit}">
+    <t:beaneditform t:id="register" object="user" add="confirmPassword" exclude="id, role, createTime, style" class="bean col-md-offset-4 col-md-4" t:submitlabel="${message:submit}">
         <p:firstName>
             <t:textfield t:id="firstname" class="darkbox margin-bottom-3" value="firstnameValue" placeholder="${message:firstname}" />
         </p:firstName>

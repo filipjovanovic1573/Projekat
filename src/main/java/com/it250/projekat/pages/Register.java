@@ -55,7 +55,7 @@ public class Register {
     private String firstnameValue, lastnameValue;
 
     @Property
-    @Validate("required, regexp=^[A-Za-z0-9-_]+$")
+    @Validate("required, regexp=^[A-Za-z0-9-_.]+$")
     private String usernameValue;
 
     @Property
@@ -102,8 +102,8 @@ public class Register {
         user.setStyle(Style.Dark);
         user.setCreateTime(new Timestamp(new Date().getTime()));
         userDao.add(user);
-        new File(Constants.USER_FOLDER + usernameValue).mkdirs(); //needs rework
-        Common.sendEmail(emailValue, messages.get("subject"), messages.get("message"));
+        new File(Constants.USER_FOLDER + usernameValue).mkdirs();
+        alert.success(messages.get("reg_success"));
         return this;
     }
 

@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-<html t:type="layout" title="${song.name}"
+<html t:type="layout" title="Audio"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
-    <!-- <script src="${context:/js/audioplayer.min.js}"></script>
-        <script src="${context:/css/reset.css}"></script>
-        <script src="${context:/css/audioplayer.css}"></script>-->
 
     <div class="col-md-offset-4">
         <audio src="${file}" preload="auto" controls="true">

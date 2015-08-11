@@ -50,7 +50,7 @@ public class AdvancedSearch {
     @Property
     private Song song;
 
-    @Property
+    @Property @Persist
     private ArrayList<Song> songs;
 
     @Inject

@@ -3,8 +3,12 @@
       xmlns:p="tapestry:parameter">
 
     <div class="row">
-        <div class="span12">
-            <p>About IT250-Projekat application ...</p>
+        <div class="col-md-offset-4 col-md-4">
+            <h3>Ime: Filip Jovanović</h3>	
+            <h3>Broj Indeksa: 1573</h3>
+            <h3>Predmet: Veb sistemi</h3>
+            <h3>Šifra predmeta: IT250</h3>
+            <h3>Profesor: Ljubomir Lazić</h3>
         </div>
     </div>
 </html>
